@@ -293,152 +293,152 @@ export default function ContactPage() {
           {/* Right Side - Form */}
           <div style={{ paddingRight: '16px' }}>
             <form style={{ display: 'flex', flexDirection: 'column', gap: '24px' }} onSubmit={handleSubmit} noValidate>
-                {/* Name Field */}
-                <div>
-                  <label style={{
-                    display: 'block',
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    color: '#374151',
-                    marginBottom: '8px'
-                  }}>
-                    Name
-                  </label>
-                  <input
-                    type="text"
+              {/* Name Field */}
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: '#374151',
+                  marginBottom: '8px'
+                }}>
+                  Name
+                </label>
+                <input
+                  type="text"
                     name="name"
-                    placeholder="Enter your name"
+                  placeholder="Enter your name"
                     value={form.name}
                     onChange={handleChange}
-                    style={{
-                      width: '100%',
+                  style={{
+                    width: '100%',
                       padding: '12px 20px 12px 16px',
                       border: errors.name ? '1.5px solid #ef4444' : '1px solid #d1d5db',
-                      borderRadius: '8px',
-                      fontSize: '16px',
-                      outline: 'none',
+                    borderRadius: '8px',
+                    fontSize: '16px',
+                    outline: 'none',
                       transition: 'border-color 0.3s',
                       background: form.name ? '#f3f4f6' : '#fff'
-                    }}
-                  />
+                  }}
+                />
                   {errors.name && <div style={{ color: '#ef4444', fontSize: '13px', marginTop: '4px' }}>{errors.name}</div>}
-                </div>
+              </div>
 
-                {/* Phone Number Field */}
-                <div>
-                  <label style={{
-                    display: 'block',
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    color: '#374151',
-                    marginBottom: '8px'
-                  }}>
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
+              {/* Phone Number Field */}
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: '#374151',
+                  marginBottom: '8px'
+                }}>
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
                     name="phone"
-                    placeholder="Enter your phone number"
+                  placeholder="Enter your phone number"
                     value={form.phone}
                     onChange={handleChange}
-                    style={{
-                      width: '100%',
+                  style={{
+                    width: '100%',
                       padding: '12px 20px 12px 16px',
                       border: errors.phone ? '1.5px solid #ef4444' : '1px solid #d1d5db',
-                      borderRadius: '8px',
-                      fontSize: '16px',
-                      outline: 'none',
+                    borderRadius: '8px',
+                    fontSize: '16px',
+                    outline: 'none',
                       transition: 'border-color 0.3s',
                       background: form.phone ? '#f3f4f6' : '#fff'
-                    }}
-                  />
+                  }}
+                />
                   {errors.phone && <div style={{ color: '#ef4444', fontSize: '13px', marginTop: '4px' }}>{errors.phone}</div>}
-                </div>
+              </div>
 
-                {/* Email Field */}
-                <div>
-                  <label style={{
-                    display: 'block',
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    color: '#374151',
-                    marginBottom: '8px'
-                  }}>
-                    Email
-                  </label>
-                  <input
-                    type="email"
+              {/* Email Field */}
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: '#374151',
+                  marginBottom: '8px'
+                }}>
+                  Email
+                </label>
+                <input
+                  type="email"
                     name="email"
-                    placeholder="Enter your email"
+                  placeholder="Enter your email"
                     value={form.email}
                     onChange={handleChange}
-                    style={{
-                      width: '100%',
+                  style={{
+                    width: '100%',
                       padding: '12px 20px 12px 16px',
                       border: errors.email ? '1.5px solid #ef4444' : '1px solid #d1d5db',
-                      borderRadius: '8px',
-                      fontSize: '16px',
-                      outline: 'none',
+                    borderRadius: '8px',
+                    fontSize: '16px',
+                    outline: 'none',
                       transition: 'border-color 0.3s',
                       background: form.email ? '#f3f4f6' : '#fff'
-                    }}
-                  />
+                  }}
+                />
                   {errors.email && <div style={{ color: '#ef4444', fontSize: '13px', marginTop: '4px' }}>{errors.email}</div>}
-                </div>
+              </div>
 
-                {/* Message Field */}
-                <div>
-                  <label style={{
-                    display: 'block',
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    color: '#374151',
-                    marginBottom: '8px'
-                  }}>
-                    Message
-                  </label>
-                  <textarea
+              {/* Message Field */}
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: '#374151',
+                  marginBottom: '8px'
+                }}>
+                  Message
+                </label>
+                <textarea
                     name="message"
-                    placeholder="Type your message"
-                    rows="4"
+                  placeholder="Type your message"
+                  rows="4"
                     value={form.message}
                     onChange={handleChange}
-                    style={{
-                      width: '100%',
+                  style={{
+                    width: '100%',
                       padding: '12px 20px 12px 16px',
                       border: errors.message ? '1.5px solid #ef4444' : '1px solid #d1d5db',
-                      borderRadius: '8px',
-                      fontSize: '16px',
-                      outline: 'none',
-                      resize: 'vertical',
-                      fontFamily: 'inherit',
+                    borderRadius: '8px',
+                    fontSize: '16px',
+                    outline: 'none',
+                    resize: 'vertical',
+                    fontFamily: 'inherit',
                       transition: 'border-color 0.3s',
                       background: form.message ? '#f3f4f6' : '#fff'
-                    }}
-                  />
-                  {errors.message && <div style={{ color: '#ef4444', fontSize: '13px', marginTop: '4px' }}>{errors.message}</div>}
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  style={{
-                    backgroundColor: '#3b82f6',
-                    color: '#ffffff',
-                    border: 'none',
-                    borderRadius: '8px',
-                    padding: '16px 32px',
-                    fontSize: '16px',
-                    fontWeight: 'bold',
-                    textTransform: 'uppercase',
-                    cursor: 'pointer',
-                    transition: 'background-color 0.3s',
-                    width: '100%'
                   }}
-                >
-                  Submit
-                </button>
-              </form>
+                />
+                  {errors.message && <div style={{ color: '#ef4444', fontSize: '13px', marginTop: '4px' }}>{errors.message}</div>}
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: '#3b82f6',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '8px',
+                  padding: '16px 32px',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  textTransform: 'uppercase',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.3s',
+                    width: '100%'
+                }}
+              >
+                Submit
+              </button>
+            </form>
           </div>
         </div>
         </AnimatedFadeInUp>

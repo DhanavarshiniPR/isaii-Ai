@@ -6,9 +6,9 @@ import './globals.css'
 export default function Home() {
   return (
     <main style={{ minHeight: '100vh', backgroundColor: '#fafafa', padding: '0' }}>
-      <Hero />
-      <Features />
-      {/* More sections like Services, Products will go here */}
-    </main>
+        <Hero />
+        <Features />
+        {/* More sections like Services, Products will go here */}
+      </main>
   )
 }
