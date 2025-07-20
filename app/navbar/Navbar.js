@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import './Navbar.css';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,10 +40,10 @@ export default function Navbar() {
             <span className="navbar-ai">AI</span>
           </div>
           <nav className={`navbar-links${menuOpen ? ' open' : ''}`}>
-            <a href="/" className={pathname === '/' ? 'active' : ''}>Home</a>
-            <a href="/products" className={pathname === '/products' ? 'active' : ''}>Our Products</a>
-            <a href="/services" className={pathname === '/services' ? 'active' : ''}>Services</a>
-            <a href="/contact" className={pathname === '/contact' ? 'active' : ''}>Contact</a>
+            <Link href="/" className={pathname === '/' ? 'active' : ''}>Home</Link>
+            <Link href="/products" className={pathname === '/products' ? 'active' : ''}>Our Products</Link>
+            <Link href="/services" className={pathname === '/services' ? 'active' : ''}>Services</Link>
+            <Link href="/contact" className={pathname === '/contact' ? 'active' : ''}>Contact</Link>
           </nav>
         </div>
       ) : (
@@ -52,10 +53,10 @@ export default function Navbar() {
             <span className="navbar-ai">AI</span>
           </div>
           <nav className={`navbar-links${menuOpen ? ' open' : ''}`}>
-            <a href="/" className={pathname === '/' ? 'active' : ''}>Home</a>
-            <a href="/products" className={pathname === '/products' ? 'active' : ''}>Our Products</a>
-            <a href="/services" className={pathname === '/services' ? 'active' : ''}>Services</a>
-            <a href="/contact" className={pathname === '/contact' ? 'active' : ''}>Contact</a>
+            <Link href="/" className={pathname === '/' ? 'active' : ''}>Home</Link>
+            <Link href="/products" className={pathname === '/products' ? 'active' : ''}>Our Products</Link>
+            <Link href="/services" className={pathname === '/services' ? 'active' : ''}>Services</Link>
+            <Link href="/contact" className={pathname === '/contact' ? 'active' : ''}>Contact</Link>
           </nav>
         </>
       )}

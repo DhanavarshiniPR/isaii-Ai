@@ -87,7 +87,7 @@ export default function ServicesPage() {
                   color: '#6b7280',
                   lineHeight: '1.6'
                 }}>
-                  We provide expert design services that ensure your digital platforms are visually appealing, user-centric, and aligned with your brand's goals for optimal customer interaction.
+                  We provide expert design services that ensure your digital platforms are visually appealing, user-centric, and aligned with your brand&apos;s goals for optimal customer interaction.
                 </p>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function ServicesPage() {
               height: '100%',
               overflow: 'hidden',
             }}>
-              <img src="./S-2.png" style={{
+              <img src="./S-2.png" alt="Custom AI Solutions" style={{
                 width: '100%',
                 height: '220px',
                 objectFit: 'cover',
@@ -186,7 +186,7 @@ export default function ServicesPage() {
               height: '100%',
               overflow: 'hidden',
             }}>
-              <img src="/S-4.png" style={{
+              <img src="/S-4.png" alt="Web Application" style={{
                 width: '100%',
                 height: '220px',
                 objectFit: 'cover',
@@ -226,7 +226,7 @@ export default function ServicesPage() {
               height: '100%',
               overflow: 'hidden',
             }}>
-              <img src="/S-5.png" style={{
+              <img src="/S-5.png" alt="Mobile Application" style={{
                 width: '100%',
                 height: '220px',
                 objectFit: 'cover',

@@ -176,7 +176,7 @@ export default function Products() {
         }}>
           <h2 style={{ fontSize: '36px', fontWeight: 700, marginBottom: '12px' }}>Explore Our FAQs</h2>
           <p style={{ color: '#444', fontSize: '17px', marginBottom: '40px' }}>
-            Find quick answers to commonly asked questions about Isaii-AI.<br />
+            Find quick answers to commonly asked questions about Isaii-AI.&apos;<br />
             Have a question not listed?
           </p>
           <div style={{
