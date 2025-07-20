@@ -248,78 +248,7 @@ export default function Hero({ isProductsPage = false }) {
           )}
         </p>
       </section>
-      {/* Feature cards below hero text */}
-      <section style={{
-        background: 'none',
-        padding: '32px 0 0 0',
-        maxWidth: '1200px',
-        margin: '0 auto',
-        display: 'flex',
-        justifyContent: 'center',
-      }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '32px',
-          width: '100%',
-          maxWidth: '1200px',
-        }}>
-          {/* Card 1 */}
-          <div style={{
-            background: '#fff',
-            borderRadius: '28px',
-            boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-            padding: '36px 32px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            maxHeight: '300px',
-            maxWidth: '600px',
-          }}>
-            <span style={{ fontSize: '38px', color: '#aaa', marginBottom: '18px' }}>🚀</span>
-            <div style={{ fontWeight: 700, fontSize: '22px', marginBottom: '12px', color: '#222' }}>Products</div>
-            <div style={{ color: '#555', fontSize: '16px', lineHeight: '1.6' }}>
-              Explore our suite of advanced AI solutions crafted to optimize workflows, elevate user experiences, and foster innovation across diverse industries and platforms.
-            </div>
-          </div>
-          {/* Card 2 */}
-          <div style={{
-            background: '#fff',
-            borderRadius: '28px',
-            boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-            padding: '36px 32px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            maxHeight: '300px',
-            maxWidth: '500px',
-          }}>
-            <span style={{ fontSize: '38px', color: '#aaa', marginBottom: '18px' }}>🧭</span>
-            <div style={{ fontWeight: 700, fontSize: '22px', marginBottom: '12px', color: '#222' }}>Design</div>
-            <div style={{ color: '#555', fontSize: '16px', lineHeight: '1.6' }}>
-              Redefine digital experiences with our dynamic design expertise, crafted to engage users through visually compelling and purpose-driven creations.
-            </div>
-          </div>
-          {/* Card 3 */}
-          <div style={{
-            background: '#fff',
-            borderRadius: '28px',
-            boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-            padding: '36px 32px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            maxHeight: '300px',
-            maxWidth: '500px',
-          }}>
-            <span style={{ fontSize: '38px', color: '#aaa', marginBottom: '18px' }}>🖼️</span>
-            <div style={{ fontWeight: 700, fontSize: '22px', marginBottom: '12px', color: '#222' }}>Customised Products</div>
-            <div style={{ color: '#555', fontSize: '16px', lineHeight: '1.6' }}>
-              Experience our tailored AI services designed to automate processes, improve decision-making, and deliver transformative results for businesses across various domains.
-            </div>
-          </div>
-        </div>
-      </section>
+     
     </>
   )
 }
