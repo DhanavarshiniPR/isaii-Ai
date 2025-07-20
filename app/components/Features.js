@@ -107,10 +107,15 @@ export default function Features() {
               {
                 title: 'Web Application',
                 content: 'We develop custom web applications designed to deliver seamless functionality, improve user engagement, and drive business growth through intuitive, responsive design.',
-                img: '/web.jpeg',
+                img: '/web.png',
                 bg: '#cffafe',
               },
-             
+              {
+                title: 'Designing',
+                content: 'We provide expert design services that ensure your digital platforms are visually appealing, user-centric, and aligned with your brand\'s goals for optimal customer interaction.',
+                img: '/app.jpeg',
+                bg: '#fce7f3',
+              },
               {
                 title: 'Custom AI Solutions',
                 content: 'We provide bespoke AI systems tailored to your business needs, enhancing efficiency, performance, and driving continuous innovation.',
