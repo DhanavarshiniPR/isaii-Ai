@@ -188,7 +188,7 @@ export default function ContactPage() {
               lineHeight: '1.6',
               marginBottom: '16px'
             }}>
-              Let's have a chat - there's nothing quite like talking to another person.
+              Let&apos;s have a chat - there&apos;s nothing quite like talking to another person.
             </p>
             <a href="mailto:hr@isaii.ai" style={{
               color: '#3b82f6',
@@ -239,7 +239,7 @@ export default function ContactPage() {
               lineHeight: '1.6',
               marginBottom: '16px'
             }}>
-              We'd be delighted to welcome you to our Head Office.
+              We&apos;d be delighted to welcome you to our Head Office.
             </p>
             <span style={{
               color: '#3b82f6',
