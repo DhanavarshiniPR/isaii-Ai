@@ -1,4 +1,12 @@
 /* globals.css */
+html, body, main, section {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
 body {
   margin: 0;
   padding: 0;

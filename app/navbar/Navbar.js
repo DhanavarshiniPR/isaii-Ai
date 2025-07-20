@@ -48,16 +48,16 @@ export default function Navbar() {
         </div>
       ) : (
         <>
-      <div className="navbar-logo">
-        <h1 className="navbar-title">Isaii</h1>
-        <span className="navbar-ai">AI</span>
-      </div>
-      <nav className={`navbar-links${menuOpen ? ' open' : ''}`}>  
+          <div className="navbar-logo">
+            <h1 className="navbar-title">Isaii</h1>
+            <span className="navbar-ai">AI</span>
+          </div>
+          <nav className={`navbar-links${menuOpen ? ' open' : ''}`}>  
             <Link href="/" className={pathname === '/' ? 'active' : ''}>Home</Link>
             <Link href="/products" className={pathname === '/products' ? 'active' : ''}>Our Products</Link>
             <Link href="/services" className={pathname === '/services' ? 'active' : ''}>Services</Link>
             <Link href="/contact" className={pathname === '/contact' ? 'active' : ''}>Contact</Link>
-      </nav>
+          </nav>
         </>
       )}
       <button
