@@ -19,30 +19,34 @@ export default function Features() {
         padding: isMobile ? '24px 0' : '48px 0',
         background: 'none',
         maxWidth: isMobile ? '100%' : '1200px',
-        margin: '0 auto',
+        margin: isMobile ? '0' : '0 auto',
         boxSizing: 'border-box',
         borderRadius: 0,
         boxShadow: 'none',
+        width: '100%',
       }}>
         <div style={{
           background: '#fff',
           borderRadius: isMobile ? '16px' : '28px',
           boxShadow: '0 4px 32px rgba(0,0,0,0.10)',
           padding: isMobile ? '24px 8px' : '48px 40px',
+          width: '100%',
+          boxSizing: 'border-box',
         }}>
           <div style={{
             display: 'flex',
             flexDirection: isMobile ? 'column' : 'row',
             justifyContent: 'space-between',
             alignItems: isMobile ? 'flex-start' : 'flex-start',
-            marginBottom: isMobile ? '28px' : '60px',
+            marginBottom: isMobile ? '24px' : '60px',
             gap: isMobile ? '12px' : 0,
             background: 'none',
             borderRadius: 0,
             boxShadow: 'none',
+            width: '100%',
           }}>
             <h2 style={{
-              fontSize: isMobile ? '1.5rem' : '48px',
+              fontSize: isMobile ? '1.3rem' : '48px',
               fontWeight: 'bold',
               color: '#1f2937',
               lineHeight: '1.2',
@@ -50,7 +54,10 @@ export default function Features() {
               background: 'none',
               borderRadius: 0,
               boxShadow: 'none',
-              marginBottom: isMobile ? '8px' : 0
+              marginBottom: isMobile ? '12px' : 0,
+              marginTop: isMobile ? '0' : '0',
+              zIndex: 2,
+              position: 'relative',
             }}>
               Professional Services That<br />
               Showcase Our Expertise.
@@ -64,7 +71,9 @@ export default function Features() {
               background: 'none',
               borderRadius: 0,
               boxShadow: 'none',
-              marginBottom: 0
+              marginBottom: 0,
+              zIndex: 2,
+              position: 'relative',
             }}>
               From creative design to technical solutions, our services define industry excellence.
             </p>
@@ -74,7 +83,7 @@ export default function Features() {
           <div className="features-grid" style={{
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: isMobile ? '16px' : '24px',
+            gap: isMobile ? '18px' : '24px',
             width: '100%',
             margin: 0,
             padding: 0,
@@ -133,6 +142,8 @@ export default function Features() {
                     display: 'block',
                     textDecoration: 'none',
                     willChange: 'transform, box-shadow, background',
+                    width: '100%',
+                    boxSizing: 'border-box',
                   }}>
                     <div style={{
                       width: isMobile ? '60px' : '80px',
