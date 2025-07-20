@@ -1,25 +1,36 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Footer() {
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 700);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <footer style={{
       background: '#18181a',
       borderTopLeftRadius: '24px',
       borderTopRightRadius: '24px',
-      padding: '32px 36px 0 36px',
+      padding: isMobile ? '24px 8px 0 8px' : '32px 36px 0 36px',
       display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'flex-start',
+      flexDirection: isMobile ? 'column' : 'row',
+      justifyContent: isMobile ? 'flex-start' : 'space-between',
+      alignItems: isMobile ? 'flex-start' : 'flex-start',
       minHeight: '180px',
-      width: '90%',
+      width: isMobile ? '100%' : '90%',
+      minWidth: 0,
       margin: '32px auto 0 auto',
     }}>
       {/* Left: Brand and copyright */}
-      <div style={{ minWidth: '320px' }}>
+      <div style={{ minWidth: isMobile ? 0 : '320px', width: isMobile ? '100%' : undefined, marginBottom: isMobile ? '18px' : 0 }}>
         <div style={{
           fontFamily: '"Fira Mono", "Menlo", "Monaco", "Consolas", monospace',
           fontWeight: 900,
@@ -32,12 +43,12 @@ export default function Footer() {
           ISAII-AI
         </div>
         <div style={{ color: '#8b8d92', fontSize: '15px', marginTop: '8px', fontFamily: 'Inter, Arial, sans-serif', fontWeight: 400 }}>
-          Copyright © 2024 - Isaii-AI
+          Copyright  a9 2024 - Isaii-AI
         </div>
       </div>
       {/* Right: Newsletter */}
-      <div style={{ minWidth: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-        <div style={{ color: '#f3f3f3', fontWeight: 700, fontSize: '1.18rem', marginBottom: '12px', textAlign: 'right', fontFamily: 'Inter, Arial, sans-serif', letterSpacing: '0.02em' }}>
+      <div style={{ minWidth: isMobile ? 0 : '320px', width: isMobile ? '100%' : undefined, display: 'flex', flexDirection: 'column', alignItems: isMobile ? 'flex-start' : 'flex-end' }}>
+        <div style={{ color: '#f3f3f3', fontWeight: 700, fontSize: '1.18rem', marginBottom: '12px', textAlign: isMobile ? 'left' : 'right', fontFamily: 'Inter, Arial, sans-serif', letterSpacing: '0.02em' }}>
           Subscribe to Our Newsletter
         </div>
         <form style={{ display: 'flex', alignItems: 'center', gap: '0', width: '100%', marginBottom: '12px', fontFamily: 'Inter, Arial, sans-serif' }} onSubmit={e => e.preventDefault()}>
@@ -52,7 +63,7 @@ export default function Footer() {
               fontSize: '1rem',
               padding: '8px 0',
               outline: 'none',
-              width: '160px',
+              width: isMobile ? '100%' : '160px',
               borderRadius: '0',
               marginRight: '8px',
               fontFamily: 'Inter, Arial, sans-serif',
