@@ -1,0 +1,211 @@
+.navbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #fafafa;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar-header.scrolled {
+  background-color: transparent;
+  box-shadow: none;
+  justify-content: center;
+  content: normal;
+}
+
+.navbar-collapsed-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(107, 106, 106, 0.85);
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  max-width: 580px;
+  width: 100%;
+  min-height: 45px;
+  overflow: hidden;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.navbar-collapsed-container .navbar-logo {
+  background: #fff;
+  padding: 0 20px 0 16px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.navbar-collapsed-container .navbar-links {
+  background: #18181b;
+  padding: 0 16px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  gap: 14px;
+}
+
+.navbar-collapsed-container .navbar-links a {
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  background: none;
+  padding: 0 12px 4px 12px;
+  border-radius: 0;
+  transition: none;
+  position: relative;
+}
+
+.navbar-collapsed-container .navbar-links a::after {
+  content: '';
+  display: block;
+  margin: 6px auto 0 auto;
+  width: 6px;
+  height: 6px;
+  background: transparent;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.navbar-collapsed-container .navbar-links a.active::after,
+.navbar-collapsed-container .navbar-links a:hover::after {
+  background: #fff;
+}
+
+.navbar-collapsed-container .navbar-links a:hover {
+  background: none;
+  color: #fff;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: baseline;
+  background: #fff;
+  border-radius: 16px;
+  padding: 0 18px 0 14px;
+  height: 44px;
+  margin-left: 1px;
+}
+
+.navbar-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  background: linear-gradient(135deg, #8B5CF6, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navbar-ai {
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 4px;
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 12px;
+  transition: right 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.navbar-links a {
+  color: #222;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 8px 16px 4px 16px;
+  border-radius: 8px;
+  transition: none;
+  position: relative;
+  background: none;
+}
+
+.navbar-links a::after {
+  content: '';
+  display: block;
+  margin: 6px auto 0 auto;
+  width: 6px;
+  height: 6px;
+  background: transparent;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.navbar-links a.active::after,
+.navbar-links a:hover::after {
+  background: #222;
+}
+
+.navbar-links a:hover {
+  background: none;
+  color: #222;
+}
+
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+}
+
+.navbar-hamburger span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: #222;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Hamburger animation */
+.navbar-hamburger.open span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+.navbar-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.navbar-hamburger.open span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    height: 100vh;
+    width: 70vw;
+    max-width: 320px;
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 80px 32px 32px 32px;
+    box-shadow: -2px 0 16px rgba(0,0,0,0.12);
+    transition: right 0.3s cubic-bezier(.4,0,.2,1);
+  }
+  .navbar-links.open {
+    right: 0;
+  }
+  .navbar-hamburger {
+    display: flex;
+  }
+} 
