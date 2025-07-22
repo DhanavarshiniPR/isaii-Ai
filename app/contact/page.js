@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import AnimatedFadeInUp from '../components/AnimatedFadeInUp';
+import { AnimatedHeading, AnimatedPill } from '../components/Hero';
 
 export default function ContactPage() {
   const [mounted, setMounted] = useState(false);
@@ -50,43 +51,39 @@ export default function ContactPage() {
     <div style={{ minHeight: '100vh', backgroundColor: '#fff' }}>
       {/* Contact Section */}
       <section style={{
-        padding: '32px 24px 80px',
+        padding: '48px 0 96px 0',
         maxWidth: '1200px',
-        margin: '0 auto'
+        margin: '0 auto',
+        background: '#f9fafc',
+        fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
       }}>
         {/* Header */}
         <div style={{
           textAlign: 'center',
           marginBottom: '80px'
         }}>
-          <div style={{
-            display: 'inline-block',
-            backgroundColor: '#f3f4f6',
-            color: '#6b7280',
-            fontSize: '12px',
-            fontWeight: '600',
-            padding: '8px 16px',
-            borderRadius: '20px',
-            textTransform: 'uppercase',
-            letterSpacing: '0.5px',
-            marginBottom: '24px'
-          }}>
-            ISAII CONTACT
-          </div>
-          <h1 style={{
-            fontSize: '48px',
-            fontWeight: 'bold',
-            color: '#1f2937',
-            marginBottom: '16px'
-          }}>
-            Get in touch with us today!
-          </h1>
+          <AnimatedPill text="ISAII CONTACT" style={{ fontSize: '20px', padding: '12px 28px', marginBottom: '24px' }} />
+          {/* Replace h1 with AnimatedHeading */}
+          <AnimatedHeading
+            text="Get in touch with us today!"
+            as="h1"
+            style={{
+              fontSize: '48px',
+              fontWeight: 'bold',
+              marginTop: 0,
+              marginBottom: '16px',
+              color: '#18181b',
+              background: 'none',
+              textShadow: 'none',
+            }}
+          />
           <p style={{
             fontSize: '18px',
-            color: '#6b7280',
+            color: '#222',
             maxWidth: '600px',
             margin: '0 auto',
-            lineHeight: '1.6'
+            lineHeight: '1.6',
+            textShadow: 'none',
           }}>
             Contact our sales and support teams for demos, onboarding assistance, or any product inquiries.
           </p>
@@ -97,18 +94,38 @@ export default function ContactPage() {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: '32px',
-          marginBottom: '80px'
+          marginBottom: '80px',
+          background: 'none',
+          border: 'none',
+          boxShadow: 'none',
+          padding: 0,
         }}>
           {/* Card 1: Message us */}
           <AnimatedFadeInUp>
           <div style={{
-            backgroundColor: '#ffffff',
+            background: 'rgba(30, 30, 40, 0.96)',
             borderRadius: '16px',
-            padding: '32px',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-            border: '1px solid #e5e7eb',
-            textAlign: 'center'
-          }}>
+            padding: '20px',
+            boxShadow: '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset',
+            border: '2px solid #00fff7',
+            textAlign: 'center',
+            color: '#fff',
+            fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
+            transition: 'transform 0.3s, box-shadow 0.3s, border 0.3s',
+            willChange: 'transform, box-shadow, border',
+            minHeight: 0,
+            minHeight: '380px',
+            height: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            wordBreak: 'break-word',
+            overflow: 'visible',
+          }}
+          onMouseOver={e => { e.currentTarget.style.boxShadow = '0 0 32px #00fff7, 0 0 0 2.5px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1.04)'; }}
+          onMouseOut={e => { e.currentTarget.style.boxShadow = '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1)'; }}
+          >
             <div style={{
               width: '48px',
               height: '48px',
@@ -123,20 +140,10 @@ export default function ContactPage() {
             }}>
               💬
             </div>
-            <h3 style={{
-              fontSize: '20px',
-              fontWeight: 'bold',
-              color: '#1f2937',
-              marginBottom: '12px'
-            }}>
+            <h3 style={{ fontSize: '1.18rem', fontWeight: 'bold', marginTop: 0, marginBottom: '12px', textAlign: 'center', color: '#fff', background: 'none', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>
               Message us
             </h3>
-            <p style={{
-              fontSize: '16px',
-              color: '#6b7280',
-              lineHeight: '1.6',
-              marginBottom: '16px'
-            }}>
+            <p style={{ fontSize: '1rem', color: '#fff', lineHeight: '1.6', textAlign: 'left', margin: 0, marginTop: '8px', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>
               Message us using our online chat system for quick and efficient support.
             </p>
             <a href="mailto:support@isaii.ai" style={{
@@ -153,13 +160,29 @@ export default function ContactPage() {
           {/* Card 2: Contact Us */}
           <AnimatedFadeInUp>
           <div style={{
-            backgroundColor: '#ffffff',
+            background: 'rgba(30, 30, 40, 0.96)',
             borderRadius: '16px',
-            padding: '32px',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-            border: '1px solid #e5e7eb',
-            textAlign: 'center'
-          }}>
+            padding: '20px',
+            boxShadow: '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset',
+            border: '2px solid #00fff7',
+            textAlign: 'center',
+            color: '#fff',
+            fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
+            transition: 'transform 0.3s, box-shadow 0.3s, border 0.3s',
+            willChange: 'transform, box-shadow, border',
+            minHeight: 0,
+            minHeight: '380px',
+            height: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            wordBreak: 'break-word',
+            overflow: 'visible',
+          }}
+          onMouseOver={e => { e.currentTarget.style.boxShadow = '0 0 32px #00fff7, 0 0 0 2.5px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1.04)'; }}
+          onMouseOut={e => { e.currentTarget.style.boxShadow = '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1)'; }}
+          >
             <div style={{
               width: '48px',
               height: '48px',
@@ -174,20 +197,10 @@ export default function ContactPage() {
             }}>
               📞
             </div>
-            <h3 style={{
-              fontSize: '20px',
-              fontWeight: 'bold',
-              color: '#1f2937',
-              marginBottom: '12px'
-            }}>
+            <h3 style={{ fontSize: '1.18rem', fontWeight: 'bold', marginTop: 0, marginBottom: '12px', textAlign: 'center', color: '#fff', background: 'none', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>
               Contact Us
             </h3>
-            <p style={{
-              fontSize: '16px',
-              color: '#6b7280',
-              lineHeight: '1.6',
-              marginBottom: '16px'
-            }}>
+            <p style={{ fontSize: '1rem', color: '#fff', lineHeight: '1.6', textAlign: 'left', margin: 0, marginTop: '8px', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>
               Let&apos;s have a chat - there&apos;s nothing quite like talking to another person.
             </p>
             <a href="mailto:hr@isaii.ai" style={{
@@ -204,13 +217,29 @@ export default function ContactPage() {
           {/* Card 3: Address */}
           <AnimatedFadeInUp>
           <div style={{
-            backgroundColor: '#ffffff',
+            background: 'rgba(30, 30, 40, 0.96)',
             borderRadius: '16px',
-            padding: '32px',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-            border: '1px solid #e5e7eb',
-            textAlign: 'center'
-          }}>
+            padding: '20px',
+            boxShadow: '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset',
+            border: '2px solid #00fff7',
+            textAlign: 'center',
+            color: '#fff',
+            fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
+            transition: 'transform 0.3s, box-shadow 0.3s, border 0.3s',
+            willChange: 'transform, box-shadow, border',
+            minHeight: 0,
+            minHeight: '380px',
+            height: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            wordBreak: 'break-word',
+            overflow: 'visible',
+          }}
+          onMouseOver={e => { e.currentTarget.style.boxShadow = '0 0 32px #00fff7, 0 0 0 2.5px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1.04)'; }}
+          onMouseOut={e => { e.currentTarget.style.boxShadow = '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1)'; }}
+          >
             <div style={{
               width: '48px',
               height: '48px',
@@ -225,20 +254,10 @@ export default function ContactPage() {
             }}>
               📍
             </div>
-            <h3 style={{
-              fontSize: '20px',
-              fontWeight: 'bold',
-              color: '#1f2937',
-              marginBottom: '12px'
-            }}>
+            <h3 style={{ fontSize: '1.18rem', fontWeight: 'bold', marginTop: 0, marginBottom: '12px', textAlign: 'center', color: '#fff', background: 'none', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>
               Address
             </h3>
-            <p style={{
-              fontSize: '16px',
-              color: '#6b7280',
-              lineHeight: '1.6',
-              marginBottom: '16px'
-            }}>
+            <p style={{ fontSize: '1rem', color: '#fff', lineHeight: '1.6', textAlign: 'left', margin: 0, marginTop: '8px', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>
               We&apos;d be delighted to welcome you to our Head Office.
             </p>
             <span style={{
@@ -299,7 +318,7 @@ export default function ContactPage() {
                   display: 'block',
                   fontSize: '14px',
                   fontWeight: '600',
-                  color: '#374151',
+                  color: '#18181b',
                   marginBottom: '8px'
                 }}>
                   Name
@@ -330,7 +349,7 @@ export default function ContactPage() {
                   display: 'block',
                   fontSize: '14px',
                   fontWeight: '600',
-                  color: '#374151',
+                  color: '#18181b',
                   marginBottom: '8px'
                 }}>
                   Phone Number
@@ -361,7 +380,7 @@ export default function ContactPage() {
                   display: 'block',
                   fontSize: '14px',
                   fontWeight: '600',
-                  color: '#374151',
+                  color: '#18181b',
                   marginBottom: '8px'
                 }}>
                   Email
@@ -392,7 +411,7 @@ export default function ContactPage() {
                   display: 'block',
                   fontSize: '14px',
                   fontWeight: '600',
-                  color: '#374151',
+                  color: '#18181b',
                   marginBottom: '8px'
                 }}>
                   Message

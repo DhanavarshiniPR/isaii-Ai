@@ -2,16 +2,104 @@
 // src/components/Hero.jsx
 import { useRef, useEffect, useState } from 'react';
 import AnimatedFadeInUp from './AnimatedFadeInUp';
+
+// Reusable AnimatedHeading component (move to top level)
+function AnimatedHeading({ text, as = 'h1', style = {}, className = '' }) {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.3 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => { if (ref.current) observer.unobserve(ref.current); };
+  }, []);
+  const Tag = as;
+  let idx = 0;
+  return (
+    <Tag ref={ref} className={className} style={{ display: 'flex', flexWrap: 'wrap', gap: '0.04em', ...style }}>
+      {text.split(/(\s|,|\n)/g).map((part, i) => {
+        if (part === ' ') return <span key={i} style={{ minWidth: '0.5em', display: 'inline-block' }}>&nbsp;</span>;
+        if (part === ',') return <span key={i} style={{ minWidth: '0.2em', display: 'inline-block' }}>,</span>;
+        if (part === '\n') return <br key={i} />;
+        const letterStyle = {
+          opacity: visible ? 1 : 0,
+          transform: visible ? 'none' : 'translateX(-32px)',
+          transition: `opacity 0.5s ${0.08 * idx}s, transform 0.5s ${0.08 * idx++}s`,
+          display: 'inline-block',
+        };
+        return <span key={i} style={letterStyle}>{part}</span>;
+      })}
+    </Tag>
+  );
+}
+
+// Reusable AnimatedPill component
+function AnimatedPill({ text, style = {}, className = '' }) {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.2 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => { if (ref.current) observer.unobserve(ref.current); };
+  }, []);
+  return (
+    <span
+      ref={ref}
+      className={className}
+      style={{
+        display: 'inline-block',
+        background: 'linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%)',
+        color: '#18181b',
+        fontSize: '20px',
+        fontWeight: 700,
+        padding: '12px 28px',
+        borderRadius: '28px',
+        textTransform: 'uppercase',
+        letterSpacing: '0.5px',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        textShadow: '0 0 8px #00fff799',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'none' : 'translateY(32px)',
+        transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
+        ...style,
+      }}
+    >
+      {text}
+    </span>
+  );
+}
+
 export default function Hero({ isProductsPage = false }) {
   const scheduleRef = useRef(null);
   const [hoverDir, setHoverDir] = useState(null); // 'up' | 'down' | null
   const [isMobile, setIsMobile] = useState(false);
+  const [headingVisible, setHeadingVisible] = useState(false);
+  const headingRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 700);
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Intersection Observer for heading animation
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setHeadingVisible(true);
+      },
+      { threshold: 0.3 }
+    );
+    if (headingRef.current) observer.observe(headingRef.current);
+    return () => { if (headingRef.current) observer.unobserve(headingRef.current); };
   }, []);
 
   // Mouse enter handler to detect direction
@@ -31,7 +119,9 @@ export default function Hero({ isProductsPage = false }) {
   return (
     <>
       <section style={{
-        backgroundColor: '#111112',
+        background: 'rgba(24, 24, 27, 0.92)',
+        backdropFilter: 'blur(12px) saturate(140%)',
+        WebkitBackdropFilter: 'blur(12px) saturate(140%)',
         color: '#fff',
         padding: isMobile ? '28px 0 28px 0' : '48px 0 48px 32px',
         borderRadius: isMobile ? '16px' : '32px',
@@ -43,31 +133,35 @@ export default function Hero({ isProductsPage = false }) {
         flexDirection: isMobile ? 'column' : 'row',
         justifyContent: 'flex-start',
         alignItems: isMobile ? 'flex-start' : 'center',
-        boxShadow: '0 12px 48px rgba(0,0,0,0.22)'
+        boxShadow: '0 4px 24px #18181b44',
+        fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
       }}>
         {/* Main hero text and CTA directly in section */}
         <div style={{ flex: '1', maxWidth: isMobile ? '100%' : '650px', zIndex: 2 }}>
-          <h1 style={{ 
-            fontSize: isMobile ? '2.2rem' : '72px', 
-            fontWeight: '900', 
-            marginBottom: isMobile ? '18px' : '32px',
-            lineHeight: isMobile ? '1.15' : '1.08',
-            background: 'linear-gradient(135deg, #fff, #e5e7eb)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            wordBreak: 'break-word',
-            textAlign: isMobile ? 'left' : 'inherit',
-          }}>
-            Innovate, Automate,<br />
-            and Succeed with AI
-          </h1>
+          <AnimatedHeading
+            text={"Innovate, Automate,\nand Succeed with AI"}
+            as="h1"
+            style={{
+              fontSize: isMobile ? '2.2rem' : '72px',
+              fontWeight: '900',
+              marginBottom: isMobile ? '18px' : '32px',
+              lineHeight: isMobile ? '1.15' : '1.08',
+              background: 'linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              wordBreak: 'break-word',
+              textAlign: isMobile ? 'left' : 'inherit',
+              textShadow: '0 0 8px #00fff799',
+            }}
+          />
           <p style={{ 
-            fontSize: isMobile ? '1rem' : '22px', 
-            color: '#d1d5db', 
+            fontSize: isMobile ? '1rem' : '22px',
+            color: '#fff',
             marginBottom: isMobile ? '28px' : '48px',
             lineHeight: isMobile ? '1.5' : '1.6',
             textAlign: isMobile ? 'left' : 'inherit',
+            textShadow: 'none',
           }}>
             Innovative AI technology designed to solve pressing challenges,<br />
             providing businesses with strategic, actionable problem-solving<br />
@@ -82,14 +176,14 @@ export default function Hero({ isProductsPage = false }) {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                backgroundColor: '#444',
+                background: 'linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%)',
                 borderRadius: '16px',
                 textDecoration: 'none',
                 overflow: 'hidden',
                 fontWeight: 700,
                 fontSize: isMobile ? '1rem' : '20px',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
-                transition: 'box-shadow 0.2s',
+                boxShadow: '0 0 12px #00fff799',
+                transition: 'box-shadow 0.2s, background 0.2s',
                 cursor: 'pointer',
                 border: 'none',
                 padding: 0,
@@ -100,7 +194,7 @@ export default function Hero({ isProductsPage = false }) {
             >
               <span
                 style={{
-                  color: '#fff',
+                  color: '#18181b',
                   padding: isMobile ? '0 18px' : '0 36px',
                   display: 'flex',
                   alignItems: 'center',
@@ -114,13 +208,14 @@ export default function Hero({ isProductsPage = false }) {
                     hoverDir === 'up' ? 'translateY(-12px)' :
                     hoverDir === 'down' ? 'translateY(12px)' :
                     'translateY(0)',
+                  textShadow: 'none',
                 }}
               >
                 Schedule a call
               </span>
               <span
                 style={{
-                  background: '#ff6a00',
+                  background: 'rgba(18, 22, 34, 0.92)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -129,9 +224,10 @@ export default function Hero({ isProductsPage = false }) {
                   borderRadius: '16px',
                   transition: 'background 0.2s',
                   fontSize: isMobile ? '20px' : '28px',
+                  boxShadow: '0 0 8px #8B5CF699',
                 }}
               >
-                <svg width={isMobile ? '24' : '32'} height={isMobile ? '24' : '32'} viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg width={isMobile ? '24' : '32'} height={isMobile ? '24' : '32'} viewBox="0 0 24 24" fill="none" stroke="#00fff7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block', filter: 'drop-shadow(0 0 4px #00fff7cc)' }}><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </span>
             </a>
           </div>
@@ -150,10 +246,11 @@ export default function Hero({ isProductsPage = false }) {
                 height: '160px',
                 objectFit: 'cover',
                 borderRadius: '50%',
-                filter: 'drop-shadow(0 8px 32px #0008)',
+                filter: 'drop-shadow(0 0 8px #00fff799)',
                 zIndex: 1,
                 transition: 'transform 0.3s',
                 cursor: 'pointer',
+                border: '2.5px solid #00fff7',
               }}
               onMouseOver={e => e.currentTarget.style.transform = 'scale(1.08)'}
               onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
@@ -161,6 +258,7 @@ export default function Hero({ isProductsPage = false }) {
             <img
               src="/ai.jpeg"
               alt="Tech Abstract Bottom Right"
+              className="rotating-eye"
               style={{
                 position: 'absolute',
                 bottom: '-60px',
@@ -169,13 +267,11 @@ export default function Hero({ isProductsPage = false }) {
                 height: '220px',
                 objectFit: 'cover',
                 borderRadius: '50%',
-                filter: 'drop-shadow(0 12px 48px #000a)',
+                filter: 'drop-shadow(0 0 12px #8B5CF699)',
                 zIndex: 1,
-                transition: 'transform 0.3s',
                 cursor: 'pointer',
+                border: '2.5px solid #8B5CF6',
               }}
-              onMouseOver={e => e.currentTarget.style.transform = 'scale(1.08)'}
-              onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
             />
             <img
               src="/tech.jpeg"
@@ -188,10 +284,11 @@ export default function Hero({ isProductsPage = false }) {
                 height: '160px',
                 objectFit: 'cover',
                 borderRadius: '50%',
-                filter: 'drop-shadow(0 8px 32px #0008)',
+                filter: 'drop-shadow(0 0 8px #00fff799)',
                 zIndex: 1,
                 transition: 'transform 0.3s',
                 cursor: 'pointer',
+                border: '2.5px solid #00fff7',
               }}
               onMouseOver={e => e.currentTarget.style.transform = 'scale(1.08)'}
               onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
@@ -252,3 +349,5 @@ export default function Hero({ isProductsPage = false }) {
     </>
   )
 }
+
+export { AnimatedHeading, AnimatedPill };

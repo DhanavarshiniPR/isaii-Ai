@@ -2,6 +2,7 @@
 // src/components/Features.jsx
 import AnimatedFadeInUp from './AnimatedFadeInUp';
 import { useState, useEffect } from 'react';
+import { AnimatedHeading } from './Hero';
 
 export default function Features() {
   const [isMobile, setIsMobile] = useState(false);
@@ -16,55 +17,67 @@ export default function Features() {
     <>
       {/* Professional Services Section */}
       <section style={{
-        padding: isMobile ? '24px 0' : '48px 0',
-        background: 'none',
+        padding: isMobile ? '32px 0' : '64px 0',
+        background: 'rgba(24, 24, 27, 0.92)',
+        backdropFilter: 'blur(12px) saturate(140%)',
+        WebkitBackdropFilter: 'blur(12px) saturate(140%)',
+        borderRadius: isMobile ? '18px' : '32px',
+        boxShadow: '0 4px 32px #18181b44',
         maxWidth: isMobile ? '100%' : '1200px',
-        margin: isMobile ? '0' : '0 auto',
-        boxSizing: 'border-box',
-        borderRadius: 0,
-        boxShadow: 'none',
+        margin: isMobile ? '0' : '32px auto',
         width: '100%',
+        fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
+        border: '1.5px solid #8B5CF6',
       }}>
         <div style={{
-          background: '#fff',
-          borderRadius: isMobile ? '16px' : '28px',
-          boxShadow: '0 4px 32px rgba(0,0,0,0.10)',
-          padding: isMobile ? '24px 8px' : '48px 40px',
+          background: 'transparent',
+          borderRadius: 0,
+          boxShadow: 'none',
+          padding: 0,
           width: '100%',
           boxSizing: 'border-box',
         }}>
           <div style={{
             display: 'flex',
-            flexDirection: isMobile ? 'column' : 'row',
-            justifyContent: 'space-between',
-            alignItems: isMobile ? 'flex-start' : 'flex-start',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
             marginBottom: isMobile ? '24px' : '60px',
             gap: isMobile ? '12px' : 0,
             background: 'none',
             borderRadius: 0,
             boxShadow: 'none',
             width: '100%',
+            textAlign: 'center',
           }}>
-            <h2 style={{
-              fontSize: isMobile ? '1.3rem' : '48px',
-              fontWeight: 'bold',
-              color: '#1f2937',
-              lineHeight: '1.2',
-              maxWidth: isMobile ? '100%' : '600px',
-              background: 'none',
-              borderRadius: 0,
-              boxShadow: 'none',
-              marginBottom: isMobile ? '12px' : 0,
-              marginTop: isMobile ? '0' : '0',
-              zIndex: 2,
-              position: 'relative',
-            }}>
-              Professional Services That<br />
-              Showcase Our Expertise.
-            </h2>
+            <AnimatedHeading
+              as="h2"
+              text={"Professional Services That\nShowcase Our Expertise."}
+              style={{
+                fontSize: isMobile ? '2rem' : '48px',
+                fontWeight: 'bold',
+                marginTop: isMobile ? '8px' : '24px',
+                marginBottom: isMobile ? '18px' : '32px',
+                marginLeft: 0,
+                marginRight: 0,
+                background: 'linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                textShadow: '0 0 8px #00fff799',
+                lineHeight: '1.2',
+                maxWidth: isMobile ? '100%' : '700px',
+                zIndex: 2,
+                position: 'relative',
+                justifyContent: 'center',
+                width: '100%',
+                textAlign: 'center',
+              }}
+            />
             <p style={{
-              fontSize: isMobile ? '1rem' : '18px',
-              color: '#6b7280',
+              fontSize: isMobile ? '1.1rem' : '20px',
+              color: '#fff',
+              margin: 0,
               lineHeight: '1.6',
               maxWidth: isMobile ? '100%' : '400px',
               marginTop: '8px',
@@ -74,6 +87,7 @@ export default function Features() {
               marginBottom: 0,
               zIndex: 2,
               position: 'relative',
+              textShadow: 'none',
             }}>
               From creative design to technical solutions, our services define industry excellence.
             </p>
@@ -83,13 +97,15 @@ export default function Features() {
           <div className="features-grid" style={{
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: isMobile ? '18px' : '24px',
+            gap: isMobile ? '24px' : '32px',
             width: '100%',
             margin: 0,
-            padding: 0,
+            padding: isMobile ? '24px 4px' : '32px 12px',
             background: 'none',
             borderRadius: 0,
             boxShadow: 'none',
+            boxSizing: 'border-box',
+            overflow: 'hidden',
           }}>
             {[
               {
@@ -132,30 +148,38 @@ export default function Features() {
               return (
                 <AnimatedFadeInUp key={card.title}>
                   <div className="feature-card" style={{
-                    background: card.bg,
-                    borderRadius: isMobile ? '12px' : '18px',
-                    boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-                    padding: isMobile ? '16px' : '28px',
-                    border: '1px solid #e5e7eb',
-                    transition: 'transform 0.3s, box-shadow 0.3s, background 0.3s',
+                    background: 'rgba(30, 30, 40, 0.96)',
+                    borderRadius: isMobile ? '14px' : '22px',
+                    boxShadow: '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset',
+                    border: '2px solid #00fff7',
+                    transition: 'transform 0.3s, box-shadow 0.3s, border 0.3s',
                     cursor: 'pointer',
-                    display: 'block',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     textDecoration: 'none',
-                    willChange: 'transform, box-shadow, background',
+                    willChange: 'transform, box-shadow, border',
                     width: '100%',
+                    aspectRatio: '1 / 1',
                     boxSizing: 'border-box',
-                  }}>
+                    overflow: 'hidden',
+                    padding: isMobile ? '20px' : '32px',
+                  }}
+                  onMouseOver={e => { e.currentTarget.style.boxShadow = '0 0 32px #00fff7, 0 0 0 2.5px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1.04)'; }}
+                  onMouseOut={e => { e.currentTarget.style.boxShadow = '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1)'; }}
+                  >
                     <div style={{
-                      width: isMobile ? '60px' : '80px',
-                      height: isMobile ? '60px' : '80px',
-                      background: '#fff',
+                      width: isMobile ? '64px' : '90px',
+                      height: isMobile ? '64px' : '90px',
+                      background: 'rgba(24, 24, 27, 0.92)',
                       borderRadius: '50%',
-                      boxShadow: '0 2px 12px rgba(0,0,0,0.10)',
-                      border: '2px solid #e5e7eb',
+                      boxShadow: '0 1px 4px #00fff799',
+                      border: '1.5px solid #8B5CF6',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      margin: isMobile ? '0 auto 10px auto' : '0 auto 18px auto',
+                      margin: isMobile ? '0 auto 14px auto' : '0 auto 22px auto',
                     }}>
                       <img src={card.img} alt={card.title + ' image'} style={{
                         width: '100%',
@@ -163,10 +187,12 @@ export default function Features() {
                         objectFit: 'cover',
                         borderRadius: '50%',
                         display: 'block',
+                        boxShadow: '0 0 8px #00fff7cc',
+                        border: '1.5px solid #8B5CF6',
                       }} />
                     </div>
-                    <h3 style={{ fontSize: isMobile ? '1.1rem' : '24px', fontWeight: 'bold', color: '#1f2937', marginBottom: isMobile ? '8px' : '16px', textAlign: 'center' }}>{card.title}</h3>
-                    <p style={{ fontSize: isMobile ? '0.98rem' : '16px', color: '#6b7280', lineHeight: '1.6', textAlign: 'center' }}>{card.content}</p>
+                    <h3 style={{ fontSize: isMobile ? '1.2rem' : '26px', fontWeight: 'bold', marginTop: 0, marginBottom: isMobile ? '10px' : '18px', textAlign: 'center', background: 'linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', textShadow: '0 0 8px #00fff799' }}>{card.title}</h3>
+                    <p style={{ fontSize: isMobile ? '1.05rem' : '17px', color: '#fff', lineHeight: '1.6', textAlign: 'center', margin: 0, textShadow: 'none', wordBreak: 'break-word' }}>{card.content}</p>
                   </div>
                 </AnimatedFadeInUp>
               );
@@ -177,11 +203,23 @@ export default function Features() {
 
       {/* Empowerment Section with Decorative Shapes */}
       <section style={{
-        background: '#f9fafc',
-        padding: isMobile ? '40px 0 30px 0' : '80px 0 60px 0',
+        background: 'rgba(24, 24, 27, 0.92)',
+        backdropFilter: 'blur(12px) saturate(140%)',
+        WebkitBackdropFilter: 'blur(12px) saturate(140%)',
+        borderRadius: isMobile ? '18px' : '32px',
+        boxShadow: '0 2px 16px #18181b44',
+        padding: isMobile ? '48px 0 36px 0' : '96px 0 72px 0',
         textAlign: 'center',
         position: 'relative',
-        width: '100%'
+        width: '100%',
+        fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
+        color: '#fff',
+        border: '1.5px solid #8B5CF6',
+        margin: isMobile ? '24px 0' : '48px 0',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}>
         {/* Decorative shapes hidden on mobile for simplicity */}
         {!isMobile && <span style={{
@@ -209,43 +247,76 @@ export default function Features() {
             <ellipse cx="40" cy="40" rx="35" ry="20" stroke="#111827" strokeWidth="6" fill="none"/>
           </svg>
         </span>}
-        <h2 style={{
-          fontSize: isMobile ? '1.2rem' : '32px',
-          fontWeight: '600',
-          color: '#222',
-          margin: 0,
-          zIndex: 1,
-          position: 'relative',
-          letterSpacing: '-1px'
-        }}>
-          We craft AI solutions today that empower your<br />
-          business for tomorrow and beyond.
-        </h2>
+        <AnimatedHeading
+          as="h2"
+          text={"We craft AI solutions today that empower your\nbusiness for tomorrow and beyond."}
+          style={{
+            fontSize: isMobile ? '1.7rem' : '36px',
+            fontWeight: '600',
+            marginTop: isMobile ? '8px' : '24px',
+            marginBottom: isMobile ? '18px' : '32px',
+            marginLeft: 0,
+            marginRight: 0,
+            background: 'linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textShadow: '0 0 8px #00fff799',
+            letterSpacing: '-1px',
+            justifyContent: 'center',
+            width: '100%',
+            textAlign: 'center',
+          }}
+        />
       </section>
 
       {/* Digital Excellence Section */}
       <section style={{
-        background: '#fff',
-        padding: isMobile ? '40px 0 30px 0' : '100px 0 80px 0',
+        background: 'rgba(30, 30, 40, 0.96)',
+        backdropFilter: 'blur(12px) saturate(140%)',
+        WebkitBackdropFilter: 'blur(12px) saturate(140%)',
+        borderRadius: isMobile ? '18px' : '32px',
+        boxShadow: '0 2px 16px #8B5CF655',
+        padding: isMobile ? '48px 0 36px 0' : '120px 0 90px 0',
         textAlign: 'center',
-        width: '100%'
+        width: '100%',
+        fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
+        color: '#fff',
+        border: '1.5px solid #8B5CF6',
+        margin: isMobile ? '24px 0' : '48px 0',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}>
-        <h2 style={{
-          fontSize: isMobile ? '1.3rem' : '40px',
-          fontWeight: '700',
-          color: '#18181b',
-          marginBottom: '24px',
-          letterSpacing: '-1px'
-        }}>
-          Building Digital Excellence<br />
-          with Isaii.
-        </h2>
+        <AnimatedHeading
+          as="h2"
+          text={"Building Digital Excellence\nwith Isaii."}
+          style={{
+            fontSize: isMobile ? '1.7rem' : '40px',
+            fontWeight: '700',
+            marginTop: isMobile ? '8px' : '24px',
+            marginBottom: isMobile ? '18px' : '32px',
+            marginLeft: 0,
+            marginRight: 0,
+            background: 'linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textShadow: '0 0 8px #00fff799',
+            letterSpacing: '-1px',
+            justifyContent: 'center',
+            width: '100%',
+            textAlign: 'center',
+          }}
+        />
         <p style={{
-          fontSize: isMobile ? '0.98rem' : '18px',
-          color: '#52525b',
+          fontSize: isMobile ? '1.05rem' : '18px',
+          color: '#fff',
           maxWidth: '600px',
-          margin: '0 auto',
-          lineHeight: '1.6'
+          margin: '18px auto 0 auto',
+          lineHeight: '1.6',
+          textShadow: 'none',
         }}>
           Discover the innovative marketing strategies that set Isaii-Ai apart, <br />
           driving success in the digital landscape.
@@ -254,188 +325,215 @@ export default function Features() {
 
       {/* Product Grid Section */}
       <section style={{
-        padding: isMobile ? '24px 0 40px 0' : '40px 0 80px 0',
+        padding: isMobile ? '32px 0 48px 0' : '56px 0 96px 0',
         maxWidth: isMobile ? '100%' : '1200px',
         margin: '0 auto',
-        width: '100%'
+        width: '100%',
+        fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
       }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(340px, 1fr))',
-          gap: isMobile ? '16px' : '32px',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: isMobile ? '24px' : '32px',
+          width: '100%',
+          margin: 0,
+          padding: isMobile ? '24px 4px' : '32px 12px',
+          background: 'none',
+          borderRadius: 0,
+          boxShadow: 'none',
+          boxSizing: 'border-box',
+          overflow: 'hidden',
         }}>
-          {/* Card 1 */}
-          <a href="/contact" className="product-card-link" style={{ background: '#fff', borderRadius: isMobile ? '12px' : '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', padding: '0 0 18px 0', overflow: 'hidden', textDecoration: 'none', display: 'block', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'pointer', position: 'relative' }}>
-            <img src="./AI TELE.png" alt="Telephony" style={{ width: '100%', height: isMobile ? '110px' : '180px', objectFit: 'cover', borderRadius: isMobile ? '12px 12px 0 0' : '18px 18px 0 0' }} />
-            <div style={{ padding: '0 24px', position: 'relative' }}>
-              <h3 style={{ fontSize: isMobile ? '1rem' : '28px', fontWeight: 700, margin: '18px 0 0 0', color: '#1f2937', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                Isaii-Daillo
-                <span className="arrow-effect" style={{ fontSize: '20px', marginLeft: '4px', opacity: 0, transform: 'translateX(-8px)', transition: 'opacity 0.3s, transform 0.3s' }}>↗</span>
-              </h3>
-              <div style={{ color: '#666', fontWeight: 500, fontSize: isMobile ? '0.95rem' : '16px', margin: '4px 0 0 0' }}>Telephony AI</div>
-              <div style={{ color: '#888', fontSize: isMobile ? '0.92rem' : '15px', marginTop: '8px' }}>Telephony AI</div>
-            </div>
-          </a>
-          {/* Card 2 */}
-          <a href="/contact" className="product-card-link" style={{ background: '#fff', borderRadius: isMobile ? '12px' : '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', padding: '0 0 18px 0', overflow: 'hidden', textDecoration: 'none', display: 'block', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'pointer', position: 'relative' }}>
-            <img src="./AI CHAT.png" alt="Custom Chat" style={{ width: '100%', height: isMobile ? '110px' : '180px', objectFit: 'cover', borderRadius: isMobile ? '12px 12px 0 0' : '18px 18px 0 0' }} />
-            <div style={{ padding: '0 24px', position: 'relative' }}>
-              <h3 style={{ fontSize: isMobile ? '1rem' : '28px', fontWeight: 700, margin: '18px 0 0 0', color: '#1f2937', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                Isaii Whishper
-                <span className="arrow-effect" style={{ fontSize: '20px', marginLeft: '4px', opacity: 0, transform: 'translateX(-8px)', transition: 'opacity 0.3s, transform 0.3s' }}>↗</span>
-              </h3>
-              <div style={{ color: '#666', fontWeight: 500, fontSize: isMobile ? '0.95rem' : '16px', margin: '4px 0 0 0' }}>Voice AI</div>
-              <div style={{ color: '#888', fontSize: isMobile ? '0.92rem' : '15px', marginTop: '8px' }}>Voice AI that can be integrated wherever he want</div>
-            </div>
-          </a>
-          {/* Card 3 */}
-          <a href="/contact" className="product-card-link" style={{ background: '#fff', borderRadius: isMobile ? '12px' : '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', padding: '0 0 18px 0', overflow: 'hidden', textDecoration: 'none', display: 'block', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'pointer', position: 'relative' }}>
-            <img src="./AI VOICE.png" alt="Custom Voice" style={{ width: '100%', height: isMobile ? '110px' : '180px', objectFit: 'cover', borderRadius: isMobile ? '12px 12px 0 0' : '18px 18px 0 0' }} />
-            <div style={{ padding: '0 24px', position: 'relative' }}>
-              <h3 style={{ fontSize: isMobile ? '1rem' : '28px', fontWeight: 700, margin: '18px 0 0 0', color: '#1f2937', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                Isaii Assit
-                <span className="arrow-effect" style={{ fontSize: '20px', marginLeft: '4px', opacity: 0, transform: 'translateX(-8px)', transition: 'opacity 0.3s, transform 0.3s' }}>↗</span>
-              </h3>
-              <div style={{ color: '#666', fontWeight: 500, fontSize: isMobile ? '0.95rem' : '16px', margin: '4px 0 0 0' }}>Chatbot</div>
-              <div style={{ color: '#888', fontSize: isMobile ? '0.92rem' : '15px', marginTop: '8px' }}>Chatbot that can be integrated to their website in 1 click</div>
-            </div>
-          </a>
-          {/* Card 4 */}
-          <a href="/contact" className="product-card-link" style={{ background: '#fff', borderRadius: isMobile ? '12px' : '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', padding: '0 0 18px 0', overflow: 'hidden', textDecoration: 'none', display: 'block', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'pointer', position: 'relative' }}>
-            <img src="./AI WTSAP.png" alt="Whatsapp" style={{ width: '100%', height: isMobile ? '110px' : '180px', objectFit: 'cover', borderRadius: isMobile ? '12px 12px 0 0' : '18px 18px 0 0' }} />
-            <div style={{ padding: '0 24px', position: 'relative' }}>
-              <h3 style={{ fontSize: isMobile ? '1rem' : '28px', fontWeight: 700, margin: '18px 0 0 0', color: '#1f2937', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                Isaii WhatsApp
-                <span className="arrow-effect" style={{ fontSize: '20px', marginLeft: '4px', opacity: 0, transform: 'translateX(-8px)', transition: 'opacity 0.3s, transform 0.3s' }}>↗</span>
-              </h3>
-              <div style={{ color: '#666', fontWeight: 500, fontSize: isMobile ? '0.95rem' : '16px', margin: '4px 0 0 0' }}>Whatsapp</div>
-              <div style={{ color: '#888', fontSize: isMobile ? '0.92rem' : '15px', marginTop: '8px' }}>Chatbot integrated to Whatsapp</div>
-            </div>
-          </a>
-          {/* Card 5 */}
-          <a href="/contact" className="product-card-link" style={{ background: '#fff', borderRadius: isMobile ? '12px' : '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', padding: '0 0 18px 0', overflow: 'hidden', textDecoration: 'none', display: 'block', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'pointer', position: 'relative' }}>
-            <img src="./AI INSTA.png " alt="Instagram" style={{ width: '100%', height: isMobile ? '110px' : '180px', objectFit: 'cover', borderRadius: isMobile ? '12px 12px 0 0' : '18px 18px 0 0' }} />
-            <div style={{ padding: '0 24px', position: 'relative' }}>
-              <h3 style={{ fontSize: isMobile ? '1rem' : '28px', fontWeight: 700, margin: '18px 0 0 0', color: '#1f2937', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                Isaii Instagram
-                <span className="arrow-effect" style={{ fontSize: '20px', marginLeft: '4px', opacity: 0, transform: 'translateX(-8px)', transition: 'opacity 0.3s, transform 0.3s' }}>↗</span>
-              </h3>
-              <div style={{ color: '#666', fontWeight: 500, fontSize: isMobile ? '0.95rem' : '16px', margin: '4px 0 0 0' }}>Instagram</div>
-              <div style={{ color: '#888', fontSize: isMobile ? '0.92rem' : '15px', marginTop: '8px' }}>Chatbot integrated to Instagram</div>
-            </div>
-          </a>
-          {/* Card 6 */}
-          <a href="/contact" className="product-card-link" style={{ background: '#fff', borderRadius: isMobile ? '12px' : '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', padding: '0 0 18px 0', overflow: 'hidden', textDecoration: 'none', display: 'block', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'pointer', position: 'relative' }}>
-            <img src="./AI MARKET.png" alt="Market Place" style={{ width: '100%', height: isMobile ? '110px' : '180px', objectFit: 'cover', borderRadius: isMobile ? '12px 12px 0 0' : '18px 18px 0 0' }} />
-            <div style={{ padding: '0 24px', position: 'relative' }}>
-              <h3 style={{ fontSize: isMobile ? '1rem' : '28px', fontWeight: 700, margin: '18px 0 0 0', color: '#1f2937', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                Isaii Direct
-                <span className="arrow-effect" style={{ fontSize: '20px', marginLeft: '4px', opacity: 0, transform: 'translateX(-8px)', transition: 'opacity 0.3s, transform 0.3s' }}>↗</span>
-              </h3>
-              <div style={{ color: '#666', fontWeight: 500, fontSize: isMobile ? '0.95rem' : '16px', margin: '4px 0 0 0' }}>Market place</div>
-              <div style={{ color: '#888', fontSize: isMobile ? '0.92rem' : '15px', marginTop: '8px' }}>Directly Access our API with key and can limit your access</div>
-            </div>
-          </a>
-          {/* Card 7 */}
-          <a href="/contact" className="product-card-link" style={{ background: '#fff', borderRadius: isMobile ? '12px' : '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', padding: '0 0 18px 0', overflow: 'hidden', textDecoration: 'none', display: 'block', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'pointer', position: 'relative' }}>
-            <img src="./AI BILLING.png" alt="Self Billing" style={{ width: '100%', height: isMobile ? '110px' : '180px', objectFit: 'cover', borderRadius: isMobile ? '12px 12px 0 0' : '18px 18px 0 0' }} />
-            <div style={{ padding: '0 24px', position: 'relative' }}>
-              <h3 style={{ fontSize: isMobile ? '1rem' : '28px', fontWeight: 700, margin: '18px 0 0 0', color: '#1f2937', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                Self Billing
-                <span className="arrow-effect" style={{ fontSize: '20px', marginLeft: '4px', opacity: 0, transform: 'translateX(-8px)', transition: 'opacity 0.3s, transform 0.3s' }}>↗</span>
-              </h3>
-              <div style={{ color: '#666', fontWeight: 500, fontSize: isMobile ? '0.95rem' : '16px', margin: '4px 0 0 0' }}>Self Billing</div>
-              <div style={{ color: '#888', fontSize: isMobile ? '0.92rem' : '15px', marginTop: '8px' }}>Self Billing System</div>
-            </div>
-          </a>
-          {/* Card 8 */}
-          <a href="/contact" className="product-card-link" style={{ background: '#fff', borderRadius: isMobile ? '12px' : '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', padding: '0 0 18px 0', overflow: 'hidden', textDecoration: 'none', display: 'block', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'pointer', position: 'relative' }}>
-            <img src="./AI MARKET.png" alt="Market Place" style={{ width: '100%', height: isMobile ? '110px' : '180px', objectFit: 'cover', borderRadius: isMobile ? '12px 12px 0 0' : '18px 18px 0 0' }} />
-            <div style={{ padding: '0 24px', position: 'relative' }}>
-              <h3 style={{ fontSize: isMobile ? '1rem' : '28px', fontWeight: 700, margin: '18px 0 0 0', color: '#1f2937', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                Market place
-                <span className="arrow-effect" style={{ fontSize: '20px', marginLeft: '4px', opacity: 0, transform: 'translateX(-8px)', transition: 'opacity 0.3s, transform 0.3s' }}>↗</span>
-              </h3>
-              <div style={{ color: '#666', fontWeight: 500, fontSize: isMobile ? '0.95rem' : '16px', margin: '4px 0 0 0' }}>Market place</div>
-              <div style={{ color: '#888', fontSize: isMobile ? '0.92rem' : '15px', marginTop: '8px' }}>For all type of products</div>
-            </div>
-          </a>
-          {/* Card 9 */}
-          <a href="/contact" className="product-card-link" style={{ background: '#fff', borderRadius: isMobile ? '12px' : '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', padding: '0 0 18px 0', overflow: 'hidden', textDecoration: 'none', display: 'block', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'pointer', position: 'relative' }}>
-            <img src="./AI E-COMMERCE.png" alt="E-commerce" style={{ width: '100%', height: isMobile ? '110px' : '180px', objectFit: 'cover', borderRadius: isMobile ? '12px 12px 0 0' : '18px 18px 0 0' }} />
-            <div style={{ padding: '0 24px', position: 'relative' }}>
-              <h3 style={{ fontSize: isMobile ? '1rem' : '28px', fontWeight: 700, margin: '18px 0 0 0', color: '#1f2937', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                E-commerce
-                <span className="arrow-effect" style={{ fontSize: '20px', marginLeft: '4px', opacity: 0, transform: 'translateX(-8px)', transition: 'opacity 0.3s, transform 0.3s' }}>↗</span>
-              </h3>
-              <div style={{ color: '#666', fontWeight: 500, fontSize: isMobile ? '0.95rem' : '16px', margin: '4px 0 0 0' }}>E-commerce</div>
-              <div style={{ color: '#888', fontSize: isMobile ? '0.92rem' : '15px', marginTop: '8px' }}>E-commerce</div>
-            </div>
-          </a>
+          {/* Product cards */}
+          {[
+            {
+              img: './AI TELE.png',
+              title: 'Isaii-Daillo',
+              subtitle: 'Telephony AI',
+              desc: 'Telephony AI',
+            },
+            {
+              img: './AI CHAT.png',
+              title: 'Isaii Whishper',
+              subtitle: 'Voice AI',
+              desc: 'Voice AI that can be integrated wherever he want',
+            },
+            {
+              img: './AI VOICE.png',
+              title: 'Isaii Assit',
+              subtitle: 'Chatbot',
+              desc: 'Chatbot that can be integrated to their website in 1 click',
+            },
+            {
+              img: './AI WTSAP.png',
+              title: 'Isaii WhatsApp',
+              subtitle: 'Whatsapp',
+              desc: 'Chatbot integrated to Whatsapp',
+            },
+            {
+              img: './AI INSTA.png ',
+              title: 'Isaii Instagram',
+              subtitle: 'Instagram',
+              desc: 'Chatbot integrated to Instagram',
+            },
+            {
+              img: './AI MARKET.png',
+              title: 'Isaii Direct',
+              subtitle: 'Market place',
+              desc: 'Directly Access our API with key and can limit your access',
+            },
+            {
+              img: './AI BILLING.png',
+              title: 'Self Billing',
+              subtitle: 'Self Billing',
+              desc: 'Self Billing System',
+            },
+            {
+              img: './AI MARKET.png',
+              title: 'Market place',
+              subtitle: 'Market place',
+              desc: 'For all type of products',
+            },
+            {
+              img: './AI E-COMMERCE.png',
+              title: 'E-commerce',
+              subtitle: 'E-commerce',
+              desc: 'E-commerce',
+            },
+          ].map((card, idx) => (
+            <a
+              key={card.title}
+              href="/contact"
+              className="product-card-link"
+              style={{
+                background: 'rgba(30, 30, 40, 0.96)',
+                borderRadius: isMobile ? '14px' : '22px',
+                boxShadow: '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset',
+                border: '2px solid #00fff7',
+                transition: 'transform 0.3s, box-shadow 0.3s, border 0.3s',
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textDecoration: 'none',
+                willChange: 'transform, box-shadow, border',
+                width: '100%',
+                aspectRatio: '1 / 1',
+                boxSizing: 'border-box',
+                overflow: 'hidden',
+                padding: isMobile ? '20px' : '32px',
+              }}
+              onMouseOver={e => { e.currentTarget.style.boxShadow = '0 0 32px #00fff7, 0 0 0 2.5px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1.04)'; }}
+              onMouseOut={e => { e.currentTarget.style.boxShadow = '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1)'; }}
+            >
+              <img src={card.img} alt={card.title + ' image'} style={{
+                width: isMobile ? '90px' : '120px',
+                height: isMobile ? '90px' : '120px',
+                objectFit: 'contain',
+                display: 'block',
+                border: '2px solid #00fff7',
+                marginBottom: isMobile ? '14px' : '22px',
+              }} />
+              <h3 style={{ fontSize: isMobile ? '1.2rem' : '26px', fontWeight: 'bold', marginTop: 0, marginBottom: isMobile ? '10px' : '18px', textAlign: 'center', background: 'linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', textShadow: '0 0 8px #00fff799' }}>{card.title}</h3>
+              <div style={{ fontSize: isMobile ? '1.05rem' : '17px', color: '#00fff7', fontWeight: 600, marginBottom: '8px', textAlign: 'center', textShadow: '0 0 8px #00fff799' }}>{card.subtitle}</div>
+              <p style={{ fontSize: isMobile ? '1rem' : '15px', color: '#fff', lineHeight: '1.5', textAlign: 'center', margin: 0, textShadow: 'none', wordBreak: 'break-word' }}>{card.desc}</p>
+            </a>
+          ))}
         </div>
       </section>
 
       {/* FAQ Section (copied from product page) */}
       <section style={{
-        padding: isMobile ? '40px 0 30px 0' : '80px 0 60px 0',
+        padding: isMobile ? '48px 0 36px 0' : '96px 0 72px 0',
         textAlign: 'center',
-        background: 'rgba(204, 204, 204, 0.88)',
-        borderRadius: 0,
+        background: 'rgba(24, 24, 27, 0.92)',
+        borderRadius: isMobile ? '18px' : '32px',
         margin: 0,
         maxWidth: 'none',
         width: '100%',
+        color: '#fff',
+        fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
+        boxShadow: '0 2px 16px #18181b44',
+        border: '1.5px solid #8B5CF6',
       }}>
         <div style={{
           maxWidth: '1100px',
           margin: '0 auto',
-      }}>
-        <h2 style={{ fontSize: isMobile ? '1.2rem' : '36px', fontWeight: 700, marginBottom: '12px' }}>Explore Our FAQs</h2>
-        <p style={{ color: '#444', fontSize: isMobile ? '0.95rem' : '17px', marginBottom: '40px' }}>
-          Find quick answers to commonly asked questions about Isaii-AI.<br />
-          Have a question not listed?
-        </p>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: isMobile ? '16px' : '32px',
-          textAlign: 'left',
         }}>
-          <div>
-            <div style={{ fontWeight: 600, marginBottom: '6px' }}>Trial Period?</div>
-            <div style={{ color: '#444', fontSize: isMobile ? '0.9rem' : '15px' }}>
-              We offer a risk-free trial period to allow you to experience the benefits of our AI solutions firsthand.
-            </div>
-          </div>
-          <div>
-            <div style={{ fontWeight: 600, marginBottom: '6px' }}>Performance Guarantees?</div>
-            <div style={{ color: '#444', fontSize: isMobile ? '0.9rem' : '15px' }}>
-              We deliver performance benchmarks and provide ongoing optimization to ensure your AI systems operate at their best.
-            </div>
-          </div>
-          <div>
-            <div style={{ fontWeight: 600, marginBottom: '6px' }}>Customer Support?</div>
-            <div style={{ color: '#444', fontSize: isMobile ? '0.9rem' : '15px' }}>
-              Dedicated 24/7 support is available through email, chat, and phone to assist with any questions or technical issues.
-            </div>
-          </div>
-          <div>
-            <div style={{ fontWeight: 600, marginBottom: '6px' }}>Customization Options?</div>
-            <div style={{ color: '#444', fontSize: isMobile ? '0.9rem' : '15px' }}>
-              Our AI systems are fully customizable to align with your business goals, workflows, and branding requirements.
-            </div>
-          </div>
-          <div>
-            <div style={{ fontWeight: 600, marginBottom: '6px' }}>Data Security?</div>
-            <div style={{ color: '#444', fontSize: isMobile ? '0.9rem' : '15px' }}>
-              We implement robust security measures, including encryption and compliance with GDPR and other data protection standards.
-            </div>
-          </div>
-          <div>
-            <div style={{ fontWeight: 600, marginBottom: '6px' }}>Updates and Maintenance?</div>
-            <div style={{ color: '#444', fontSize: isMobile ? '0.9rem' : '15px' }}>
-              Regular updates are included to keep your AI solutions cutting-edge, along with maintenance to ensure smooth operation.
+          <h2 style={{ fontSize: isMobile ? '1.5rem' : '36px', fontWeight: 700, marginTop: 0, marginBottom: '12px', background: 'linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', textShadow: '0 0 8px #00fff799' }}>Explore Our FAQs</h2>
+          <p style={{ color: '#fff', fontSize: isMobile ? '1.05rem' : '17px', marginBottom: '40px', textShadow: 'none' }}>
+            Find quick answers to commonly asked questions about Isaii-AI.<br />
+            Have a question not listed?
+          </p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: isMobile ? '18px' : '32px',
+            textAlign: 'left',
+          }}>
+            {/* FAQ items as cards */}
+            {[
+              {
+                q: 'Trial Period?',
+                a: 'We offer a risk-free trial period to allow you to experience the benefits of our AI solutions firsthand.'
+              },
+              {
+                q: 'Performance Guarantees?',
+                a: 'We deliver performance benchmarks and provide ongoing optimization to ensure your AI systems operate at their best.'
+              },
+              {
+                q: 'Customer Support?',
+                a: 'Dedicated 24/7 support is available through email, chat, and phone to assist with any questions or technical issues.'
+              },
+              {
+                q: 'Customization Options?',
+                a: 'Our AI systems are fully customizable to align with your business goals, workflows, and branding requirements.'
+              },
+              {
+                q: 'Data Security?',
+                a: 'We implement robust security measures, including encryption and compliance with GDPR and other data protection standards.'
+              },
+              {
+                q: 'Updates and Maintenance?',
+                a: 'Regular updates are included to keep your AI solutions cutting-edge, along with maintenance to ensure smooth operation.'
+              },
+            ].map((item, idx) => (
+              <div
+                key={item.q}
+                style={{
+                  background: 'rgba(30, 30, 40, 0.96)',
+                  borderRadius: '16px',
+                  boxShadow: '0 1px 8px #8B5CF655',
+                  border: '1.5px solid #8B5CF6',
+                  padding: isMobile ? '18px 14px' : '28px 24px',
+                  margin: 0,
+                  marginBottom: 0,
+                  transition: 'transform 0.2s, box-shadow 0.2s, border 0.2s',
+                  cursor: 'default',
+                  willChange: 'transform, box-shadow, border',
+                }}
+                onMouseOver={e => { e.currentTarget.style.boxShadow = '0 0 16px #00fff799'; e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)'; e.currentTarget.style.border = '1.5px solid #00fff7'; }}
+                onMouseOut={e => { e.currentTarget.style.boxShadow = '0 1px 8px #8B5CF655'; e.currentTarget.style.transform = 'none'; e.currentTarget.style.border = '1.5px solid #8B5CF6'; }}
+              >
+                <div style={{
+                  fontSize: isMobile ? '1.1rem' : '20px',
+                  fontWeight: 700,
+                  marginBottom: '10px',
+                  background: 'linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  textShadow: '0 0 8px #00fff799',
+                }}>{item.q}</div>
+                <div style={{
+                  fontSize: isMobile ? '1rem' : '16px',
+                  color: '#fff',
+                  lineHeight: '1.6',
+                  textShadow: 'none',
+                }}>{item.a}</div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
