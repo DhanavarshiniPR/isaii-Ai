@@ -1,494 +1,286 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import AnimatedFadeInUp from '../components/AnimatedFadeInUp';
-import { AnimatedHeading, AnimatedPill } from '../components/Hero';
+import { useState } from 'react';
+import ScrollDirectionEffect from '../components/ScrollDirectionEffect';
 
 export default function ContactPage() {
-  const [mounted, setMounted] = useState(false);
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
-  const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  function validate(form) {
-    const errs = {};
-    if (!form.name.trim()) errs.name = 'Name is required.';
-    if (!form.phone.trim()) errs.phone = 'Phone number is required.';
-    else if (!/^\d{7,15}$/.test(form.phone.replace(/\D/g, ''))) errs.phone = 'Enter a valid phone number.';
-    if (!form.email.trim()) errs.email = 'Email is required.';
-    else if (!/^\S+@\S+\.\S+$/.test(form.email)) errs.email = 'Enter a valid email address.';
-    if (!form.message.trim()) errs.message = 'Message is required.';
-    return errs;
-  }
-
-  function handleChange(e) {
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: undefined });
-  }
+  };
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const errs = validate(form);
-    setErrors(errs);
     setSubmitted(true);
-    if (Object.keys(errs).length === 0) {
-      // Submit logic here (e.g., API call)
-      alert('Form submitted successfully!');
-      setForm({ name: '', phone: '', email: '', message: '' });
-      setSubmitted(false);
-    }
-  }
+    // Here you would handle the form submission (API call, etc.)
+  };
 
-  if (!mounted) {
-    return null;
-  }
+  const isFormFilled = Object.values(form).some(v => v.trim() !== '');
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#fff' }}>
-      {/* Contact Section */}
-      <section style={{
-        padding: '48px 0 96px 0',
-        maxWidth: '1200px',
-        margin: '0 auto',
-        background: '#f9fafc',
-        fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
-      }}>
-        {/* Header */}
+    <div style={{ minHeight: '100vh', background: '#fff', fontFamily: 'Inter, Helvetica, Arial, sans-serif', padding: '0', margin: 0 }}>
+      <ScrollDirectionEffect>
         <div style={{
-          textAlign: 'center',
-          marginBottom: '80px'
+          maxWidth: '1100px',
+          margin: '48px auto 0 auto',
+          background: '#fff',
+          borderRadius: '18px',
+          boxShadow: '0 2px 16px rgba(0,0,0,0.08)',
+          padding: '40px 32px 32px 32px',
+          boxSizing: 'border-box',
         }}>
-          <AnimatedPill text="ISAII CONTACT" style={{ fontSize: '20px', padding: '12px 28px', marginBottom: '24px' }} />
-          {/* Replace h1 with AnimatedHeading */}
-          <AnimatedHeading
-            text="Get in touch with us today!"
-            as="h1"
-            style={{
-              fontSize: '48px',
-              fontWeight: 'bold',
-              marginTop: 0,
-              marginBottom: '16px',
+          {/* Pill and Heading */}
+          <div style={{ textAlign: 'center', marginBottom: '18px' }}>
+            <div style={{
+              display: 'inline-block',
+              background: '#fff',
               color: '#18181b',
-              background: 'none',
-              textShadow: 'none',
-            }}
-          />
-          <p style={{
-            fontSize: '18px',
-            color: '#222',
-            maxWidth: '600px',
-            margin: '0 auto',
-            lineHeight: '1.6',
-            textShadow: 'none',
-          }}>
-            Contact our sales and support teams for demos, onboarding assistance, or any product inquiries.
-          </p>
-        </div>
-
-        {/* Contact Information Cards */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '32px',
-          marginBottom: '80px',
-          background: 'none',
-          border: 'none',
-          boxShadow: 'none',
-          padding: 0,
-        }}>
-          {/* Card 1: Message us */}
-          <AnimatedFadeInUp>
-          <div style={{
-            background: 'rgba(30, 30, 40, 0.96)',
-            borderRadius: '16px',
-            padding: '20px',
-            boxShadow: '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset',
-            border: '2px solid #00fff7',
-            textAlign: 'center',
-            color: '#fff',
-            fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
-            transition: 'transform 0.3s, box-shadow 0.3s, border 0.3s',
-            willChange: 'transform, box-shadow, border',
-            minHeight: 0,
-            minHeight: '380px',
-            height: 'auto',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            wordBreak: 'break-word',
-            overflow: 'visible',
-          }}
-          onMouseOver={e => { e.currentTarget.style.boxShadow = '0 0 32px #00fff7, 0 0 0 2.5px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1.04)'; }}
-          onMouseOut={e => { e.currentTarget.style.boxShadow = '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1)'; }}
-          >
-            <div style={{
-              width: '48px',
-              height: '48px',
-              backgroundColor: '#f3f4f6',
-              borderRadius: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 20px',
-              color: '#374151',
-              fontSize: '24px'
+              fontWeight: 700,
+              fontSize: '1.1rem',
+              borderRadius: '999px',
+              padding: '8px 24px',
+              marginBottom: '12px',
+              letterSpacing: '0.04em',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+              border: '1px solid #e5e7eb',
             }}>
-              💬
+              CONTACT US
             </div>
-            <h3 style={{ fontSize: '1.18rem', fontWeight: 'bold', marginTop: 0, marginBottom: '12px', textAlign: 'center', color: '#fff', background: 'none', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>
-              Message us
-            </h3>
-            <p style={{ fontSize: '1rem', color: '#fff', lineHeight: '1.6', textAlign: 'left', margin: 0, marginTop: '8px', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>
-              Message us using our online chat system for quick and efficient support.
-            </p>
-            <a href="mailto:support@isaii.ai" style={{
-              color: '#3b82f6',
-              textDecoration: 'underline',
-              fontSize: '14px',
-              fontWeight: '500'
+            <h1 style={{
+              fontSize: '2.1rem',
+              fontWeight: 800,
+              color: '#18181b',
+              margin: 0,
+              marginBottom: '8px',
+              textAlign: 'center',
+              letterSpacing: '-1px',
             }}>
-              support@isaii.ai
-            </a>
-          </div>
-          </AnimatedFadeInUp>
-
-          {/* Card 2: Contact Us */}
-          <AnimatedFadeInUp>
-          <div style={{
-            background: 'rgba(30, 30, 40, 0.96)',
-            borderRadius: '16px',
-            padding: '20px',
-            boxShadow: '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset',
-            border: '2px solid #00fff7',
-            textAlign: 'center',
-            color: '#fff',
-            fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
-            transition: 'transform 0.3s, box-shadow 0.3s, border 0.3s',
-            willChange: 'transform, box-shadow, border',
-            minHeight: 0,
-            minHeight: '380px',
-            height: 'auto',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            wordBreak: 'break-word',
-            overflow: 'visible',
-          }}
-          onMouseOver={e => { e.currentTarget.style.boxShadow = '0 0 32px #00fff7, 0 0 0 2.5px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1.04)'; }}
-          onMouseOut={e => { e.currentTarget.style.boxShadow = '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1)'; }}
-          >
-            <div style={{
-              width: '48px',
-              height: '48px',
-              backgroundColor: '#f3f4f6',
-              borderRadius: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 20px',
-              color: '#374151',
-              fontSize: '24px'
-            }}>
-              📞
-            </div>
-            <h3 style={{ fontSize: '1.18rem', fontWeight: 'bold', marginTop: 0, marginBottom: '12px', textAlign: 'center', color: '#fff', background: 'none', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>
-              Contact Us
-            </h3>
-            <p style={{ fontSize: '1rem', color: '#fff', lineHeight: '1.6', textAlign: 'left', margin: 0, marginTop: '8px', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>
-              Let&apos;s have a chat - there&apos;s nothing quite like talking to another person.
-            </p>
-            <a href="mailto:hr@isaii.ai" style={{
-              color: '#3b82f6',
-              textDecoration: 'underline',
-              fontSize: '14px',
-              fontWeight: '500'
-            }}>
-              hr@isaii.ai
-            </a>
-          </div>
-          </AnimatedFadeInUp>
-
-          {/* Card 3: Address */}
-          <AnimatedFadeInUp>
-          <div style={{
-            background: 'rgba(30, 30, 40, 0.96)',
-            borderRadius: '16px',
-            padding: '20px',
-            boxShadow: '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset',
-            border: '2px solid #00fff7',
-            textAlign: 'center',
-            color: '#fff',
-            fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
-            transition: 'transform 0.3s, box-shadow 0.3s, border 0.3s',
-            willChange: 'transform, box-shadow, border',
-            minHeight: 0,
-            minHeight: '380px',
-            height: 'auto',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            wordBreak: 'break-word',
-            overflow: 'visible',
-          }}
-          onMouseOver={e => { e.currentTarget.style.boxShadow = '0 0 32px #00fff7, 0 0 0 2.5px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1.04)'; }}
-          onMouseOut={e => { e.currentTarget.style.boxShadow = '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1)'; }}
-          >
-            <div style={{
-              width: '48px',
-              height: '48px',
-              backgroundColor: '#f3f4f6',
-              borderRadius: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 20px',
-              color: '#374151',
-              fontSize: '24px'
-            }}>
-              📍
-            </div>
-            <h3 style={{ fontSize: '1.18rem', fontWeight: 'bold', marginTop: 0, marginBottom: '12px', textAlign: 'center', color: '#fff', background: 'none', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>
-              Address
-            </h3>
-            <p style={{ fontSize: '1rem', color: '#fff', lineHeight: '1.6', textAlign: 'left', margin: 0, marginTop: '8px', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>
-              We&apos;d be delighted to welcome you to our Head Office.
-            </p>
-            <span style={{
-              color: '#3b82f6',
-              textDecoration: 'underline',
-              fontSize: '14px',
-              fontWeight: '500'
-            }}>
-              Coimbatore
-            </span>
-          </div>
-          </AnimatedFadeInUp>
-        </div>
-
-        {/* Contact Form Section */}
-        <AnimatedFadeInUp>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '48px',
-          alignItems: 'start',
-          margin: '0 auto',
-          maxWidth: '950px',
-          padding: '48px 0',
-        }}>
-          {/* Left Side - Text */}
-          <div>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginBottom: '24px'
-            }}>
-              <span style={{ fontSize: '28px', marginRight: '12px' }}>📨</span>
-              <h2 style={{
-                fontSize: '24px',
-                fontWeight: 'bold',
-                color: '#1f2937',
-                margin: 0
-              }}>
-                Feel free to send our friendly team a message
-              </h2>
-            </div>
+              Get in touch with us today!
+            </h1>
             <p style={{
-              fontSize: '16px',
-              color: '#6b7280',
-              lineHeight: '1.6'
+              fontSize: '1.08rem',
+              color: '#444',
+              lineHeight: '1.6',
+              maxWidth: '600px',
+              margin: '0 auto',
+              textAlign: 'center',
             }}>
-              Message us using our online chat system for quick and efficient support.
+              Contact our sales and support teams for demos, onboarding assistance, or any product inquiries.
             </p>
           </div>
-
-          {/* Right Side - Form */}
-          <div style={{ paddingRight: '16px' }}>
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '24px' }} onSubmit={handleSubmit} noValidate>
-              {/* Name Field */}
-              <div>
-                <label style={{
-                  display: 'block',
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  color: '#18181b',
-                  marginBottom: '8px'
-                }}>
-                  Name
-                </label>
-                <input
-                  type="text"
-                    name="name"
-                  placeholder="Enter your name"
-                    value={form.name}
-                    onChange={handleChange}
-                  style={{
-                    width: '100%',
-                      padding: '12px 20px 12px 16px',
-                      border: errors.name ? '1.5px solid #ef4444' : '1px solid #d1d5db',
-                    borderRadius: '8px',
-                    fontSize: '16px',
-                    outline: 'none',
-                      transition: 'border-color 0.3s',
-                      background: form.name ? '#f3f4f6' : '#fff'
-                  }}
-                />
-                  {errors.name && <div style={{ color: '#ef4444', fontSize: '13px', marginTop: '4px' }}>{errors.name}</div>}
+          {/* Info Cards Row */}
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '20px',
+            justifyContent: 'center',
+            margin: '32px 0 32px 0',
+          }}>
+            {[
+              {
+                icon: '💬',
+                title: 'Messaging us',
+                desc: 'Message us using our online chat system for quick and efficient support.',
+                email: 'support@isaii.com',
+              },
+              {
+                icon: '📞',
+                title: 'Contact Us',
+                desc: 'Let’s have a chat – there’s nothing quite like talking to another person.',
+                email: 'hr@isaii.in',
+              },
+              {
+                icon: '📍',
+                title: 'Address',
+                desc: 'We’d be delighted to welcome you to our Head Office.',
+                email: 'Coimbatore',
+              },
+            ].map((card, idx) => (
+              <div key={card.title} style={{
+                flex: '1 1 260px',
+                minWidth: '260px',
+                maxWidth: '320px',
+                background: '#fff',
+                border: '1px solid #e5e7eb',
+                borderRadius: '12px',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+                padding: '22px 18px 18px 18px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                gap: '8px',
+              }}>
+                <span style={{ fontSize: '1.6rem', marginBottom: '6px' }}>{card.icon}</span>
+                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#18181b', marginBottom: '2px' }}>{card.title}</div>
+                <div style={{ fontSize: '0.98rem', color: '#444', marginBottom: '2px' }}>{card.desc}</div>
+                <div style={{ fontSize: '0.97rem', color: '#222', fontWeight: 500 }}>{card.email}</div>
               </div>
-
-              {/* Phone Number Field */}
-              <div>
-                <label style={{
-                  display: 'block',
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  color: '#18181b',
-                  marginBottom: '8px'
-                }}>
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                    name="phone"
-                  placeholder="Enter your phone number"
-                    value={form.phone}
-                    onChange={handleChange}
-                  style={{
-                    width: '100%',
-                      padding: '12px 20px 12px 16px',
-                      border: errors.phone ? '1.5px solid #ef4444' : '1px solid #d1d5db',
-                    borderRadius: '8px',
-                    fontSize: '16px',
-                    outline: 'none',
-                      transition: 'border-color 0.3s',
-                      background: form.phone ? '#f3f4f6' : '#fff'
-                  }}
-                />
-                  {errors.phone && <div style={{ color: '#ef4444', fontSize: '13px', marginTop: '4px' }}>{errors.phone}</div>}
-              </div>
-
-              {/* Email Field */}
-              <div>
-                <label style={{
-                  display: 'block',
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  color: '#18181b',
-                  marginBottom: '8px'
-                }}>
-                  Email
-                </label>
-                <input
-                  type="email"
-                    name="email"
-                  placeholder="Enter your email"
-                    value={form.email}
-                    onChange={handleChange}
-                  style={{
-                    width: '100%',
-                      padding: '12px 20px 12px 16px',
-                      border: errors.email ? '1.5px solid #ef4444' : '1px solid #d1d5db',
-                    borderRadius: '8px',
-                    fontSize: '16px',
-                    outline: 'none',
-                      transition: 'border-color 0.3s',
-                      background: form.email ? '#f3f4f6' : '#fff'
-                  }}
-                />
-                  {errors.email && <div style={{ color: '#ef4444', fontSize: '13px', marginTop: '4px' }}>{errors.email}</div>}
-              </div>
-
-              {/* Message Field */}
-              <div>
-                <label style={{
-                  display: 'block',
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  color: '#18181b',
-                  marginBottom: '8px'
-                }}>
-                  Message
-                </label>
-                <textarea
-                    name="message"
-                  placeholder="Type your message"
-                  rows="4"
-                    value={form.message}
-                    onChange={handleChange}
-                  style={{
-                    width: '100%',
-                      padding: '12px 20px 12px 16px',
-                      border: errors.message ? '1.5px solid #ef4444' : '1px solid #d1d5db',
-                    borderRadius: '8px',
-                    fontSize: '16px',
-                    outline: 'none',
-                    resize: 'vertical',
+            ))}
+          </div>
+          {/* Two-column layout: left message, right form */}
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '32px',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+          }}>
+            {/* Left: Message */}
+            <div style={{
+              flex: '1 1 320px',
+              minWidth: '280px',
+              maxWidth: '420px',
+              background: '#fff',
+              border: '1px solid #e5e7eb',
+              borderRadius: '12px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+              padding: '28px 22px',
+              marginBottom: '18px',
+            }}>
+              <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#18181b', marginBottom: '8px' }}>Feel free to send our friendly team a message</div>
+              <div style={{ fontSize: '0.98rem', color: '#444' }}>Message us using our online chat system for quick and efficient support.</div>
+            </div>
+            {/* Right: Form */}
+            <div style={{
+              flex: '1 1 320px',
+              minWidth: '280px',
+              maxWidth: '420px',
+              background: isFormFilled ? '#eaf4ff' : '#fff',
+              border: '1px solid #e5e7eb',
+              borderRadius: '12px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+              padding: '28px 22px',
+              marginBottom: '18px',
+              transition: 'background 0.3s',
+            }}>
+              {submitted ? (
+                <div style={{ color: '#18181b', fontWeight: 600, textAlign: 'center', marginTop: '32px', fontSize: '1.1rem' }}>
+                  Thank you for contacting us! We will respond soon.
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '0' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <label htmlFor="name" style={{ fontWeight: 600, color: '#18181b', fontSize: '1.01rem', marginBottom: '2px' }}>Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      required
+                      style={{
+                        padding: '10px 12px',
+                        borderRadius: '7px',
+                        border: form.name.trim() !== '' ? '2px solid #0066ff' : '1px solid #e5e7eb',
+                        fontSize: '1rem',
+                        color: '#222',
+                        background: '#fff',
+                        outline: 'none',
+                        fontFamily: 'inherit',
+                        transition: 'border 0.2s',
+                      }}
+                      onFocus={e => e.target.style.border = '2px solid #0066ff'}
+                      onBlur={e => e.target.style.border = form.name.trim() !== '' ? '2px solid #0066ff' : '1px solid #e5e7eb'}
+                    />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <label htmlFor="phone" style={{ fontWeight: 600, color: '#18181b', fontSize: '1.01rem', marginBottom: '2px' }}>Phone</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      required
+                      style={{
+                        padding: '10px 12px',
+                        borderRadius: '7px',
+                        border: form.phone.trim() !== '' ? '2px solid #0066ff' : '1px solid #e5e7eb',
+                        fontSize: '1rem',
+                        color: '#222',
+                        background: '#fff',
+                        outline: 'none',
+                        fontFamily: 'inherit',
+                        transition: 'border 0.2s',
+                      }}
+                      onFocus={e => e.target.style.border = '2px solid #0066ff'}
+                      onBlur={e => e.target.style.border = form.phone.trim() !== '' ? '2px solid #0066ff' : '1px solid #e5e7eb'}
+                    />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <label htmlFor="email" style={{ fontWeight: 600, color: '#18181b', fontSize: '1.01rem', marginBottom: '2px' }}>Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
+                      style={{
+                        padding: '10px 12px',
+                        borderRadius: '7px',
+                        border: form.email.trim() !== '' ? '2px solid #0066ff' : '1px solid #e5e7eb',
+                        fontSize: '1rem',
+                        color: '#222',
+                        background: '#fff',
+                        outline: 'none',
+                        fontFamily: 'inherit',
+                        transition: 'border 0.2s',
+                      }}
+                      onFocus={e => e.target.style.border = '2px solid #0066ff'}
+                      onBlur={e => e.target.style.border = form.email.trim() !== '' ? '2px solid #0066ff' : '1px solid #e5e7eb'}
+                    />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <label htmlFor="message" style={{ fontWeight: 600, color: '#18181b', fontSize: '1.01rem', marginBottom: '2px' }}>Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={form.message}
+                      onChange={handleChange}
+                      required
+                      rows={4}
+                      style={{
+                        padding: '10px 12px',
+                        borderRadius: '7px',
+                        border: form.message.trim() !== '' ? '2px solid #0066ff' : '1px solid #e5e7eb',
+                        fontSize: '1rem',
+                        color: '#222',
+                        background: '#fff',
+                        outline: 'none',
+                        fontFamily: 'inherit',
+                        resize: 'vertical',
+                        transition: 'border 0.2s',
+                      }}
+                      onFocus={e => e.target.style.border = '2px solid #0066ff'}
+                      onBlur={e => e.target.style.border = form.message.trim() !== '' ? '2px solid #0066ff' : '1px solid #e5e7eb'}
+                    />
+                  </div>
+                  <button type="submit" style={{
+                    background: '#0066ff',
+                    color: '#fff',
+                    fontWeight: 700,
+                    fontSize: '1.08rem',
+                    border: 'none',
+                    borderRadius: '7px',
+                    padding: '12px 0',
+                    marginTop: '8px',
+                    cursor: 'pointer',
+                    transition: 'background 0.2s',
                     fontFamily: 'inherit',
-                      transition: 'border-color 0.3s',
-                      background: form.message ? '#f3f4f6' : '#fff'
-                  }}
-                />
-                  {errors.message && <div style={{ color: '#ef4444', fontSize: '13px', marginTop: '4px' }}>{errors.message}</div>}
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                style={{
-                  backgroundColor: '#3b82f6',
-                  color: '#ffffff',
-                  border: 'none',
-                  borderRadius: '8px',
-                  padding: '16px 32px',
-                  fontSize: '16px',
-                  fontWeight: 'bold',
-                  textTransform: 'uppercase',
-                  cursor: 'pointer',
-                  transition: 'background-color 0.3s',
-                    width: '100%'
-                }}
-              >
-                Submit
-              </button>
-            </form>
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+                    letterSpacing: '0.04em',
+                  }}>
+                    SUBMIT
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
-        </AnimatedFadeInUp>
-      </section>
-
-      <style jsx global>{`
-        @media (max-width: 600px) {
-          .contact-form-container {
-            width: 100% !important;
-            padding: 16px !important;
-            border-radius: 12px !important;
-          }
-          .contact-form-container input,
-          .contact-form-container textarea {
-            font-size: 1rem !important;
-            padding: 8px !important;
-          }
-          .contact-form-container label {
-            font-size: 1rem !important;
-          }
-          .contact-form-container button {
-            width: 100% !important;
-            font-size: 1.1rem !important;
-            padding: 12px 0 !important;
-          }
-          .contact-info {
-            margin-top: 24px !important;
-            font-size: 0.98rem !important;
-          }
-        }
-      `}</style>
+      </ScrollDirectionEffect>
     </div>
   );
 } 

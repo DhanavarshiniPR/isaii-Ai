@@ -2,16 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
-  background: rgba(18, 22, 34, 0.72);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  padding: 18px 40px;
+  background: transparent;
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: all 0.3s cubic-bezier(.4,0,.2,1);
-  font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
-  box-shadow: 0 2px 24px 0 rgba(0, 255, 255, 0.08);
+  box-shadow: none;
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  transition: box-shadow 0.2s, background 0.2s;
+  border-radius: 0;
+  margin: 0;
 }
 
 .navbar-header.scrolled {
@@ -19,128 +19,223 @@
   box-shadow: none;
   justify-content: center;
   align-items: center;
-  padding: 16px 0;
+  padding: 24px 0 16px 0;
   z-index: 2000;
   border: none;
 }
 
 .navbar-collapsed-container {
-  background: rgba(18, 22, 34, 0.82);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  background: rgba(34,34,34,0.85);
   border-radius: 32px;
-  box-shadow: 0 4px 32px 0 rgba(0, 255, 255, 0.13);
-  border: 1.5px solid rgba(0, 255, 255, 0.18);
-  max-width: 620px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  max-width: 700px;
+  min-width: 340px;
   width: 100%;
-  min-height: 56px;
-  overflow: hidden;
-  gap: 12px;
-  padding: 6px 0;
+  min-height: 60px;
+  padding: 0 8px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 16px;
   z-index: 2100;
+  overflow: hidden;
 }
 
 .navbar-collapsed-container .navbar-logo {
-  background: rgba(30, 30, 40, 0.92);
-  padding: 0 20px 0 16px;
-  height: 50px;
+  background: #fff;
+  padding: 0 16px 0 12px;
+  height: 48px;
   display: flex;
   align-items: center;
-  border-radius: 12px;
-  box-shadow: 0 0 12px 0 #3b82f6cc;
+  border-radius: 16px;
+  box-shadow: none;
+  margin: 0 6px 0 0;
+  flex-shrink: 0;
 }
 
 .navbar-collapsed-container .navbar-links {
-  background: rgba(24, 24, 27, 0.98);
-  padding: 0 16px;
-  height: 50px;
+  background: #222;
+  padding: 0 10px;
+  height: 48px;
   display: flex;
   align-items: center;
-  border-radius: 12px;
-  gap: 14px;
-  box-shadow: 0 0 8px 0 #8b5cf6cc;
+  border-radius: 16px;
+  gap: 12px;
+  box-shadow: none;
+  flex-shrink: 1;
+  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .navbar-collapsed-container .navbar-links a {
   color: #fff;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1rem;
   background: none;
-  padding: 0 12px 4px 12px;
+  padding: 0 10px 4px 10px;
   border-radius: 0;
   transition: color 0.2s;
   position: relative;
   letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .navbar-collapsed-container .navbar-links a::after {
   content: '';
   display: block;
   margin: 6px auto 0 auto;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   background: transparent;
   border-radius: 50%;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition: background 0.2s;
 }
 
-.navbar-collapsed-container .navbar-links a.active::after,
-.navbar-collapsed-container .navbar-links a:hover::after {
-  background: #00fff7;
-  box-shadow: 0 0 8px #00fff7cc;
+.navbar-collapsed-container .navbar-links a.active::after {
+  background: #fff;
 }
 
 .navbar-collapsed-container .navbar-links a:hover {
-  background: none;
-  color: #00fff7;
+  color: #fff;
 }
 
-.navbar-logo {
+.navbar-header .navbar-logo {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 0 0 0 0;
+  height: 44px;
   display: flex;
   align-items: baseline;
-  background: rgba(30, 30, 40, 0.92);
-  border-radius: 16px;
-  padding: 0 18px 0 14px;
+}
+
+.navbar-header .navbar-links {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
   height: 44px;
-  margin-left: 1px;
-  box-shadow: 0 0 12px 0 #3b82f6cc;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar-logo-pill {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 0 20px 0 16px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.navbar-links-pill {
+  background: #222;
+  border-radius: 16px;
+  box-shadow: none;
+  padding: 0 16px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
+  margin-left: 0;
+  z-index: 1;
+}
+
+.navbar-links-pill .navbar-links {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-links-pill .navbar-links a {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.97rem;
+  background: none;
+  padding: 0 10px 0 10px;
+  border-radius: 0;
+  transition: color 0.2s;
+  position: relative;
+  letter-spacing: 0.01em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.navbar-links-pill .navbar-links a::after {
+  content: '';
+  display: block;
+  margin: 4px auto 0 auto;
+  width: 6px;
+  height: 6px;
+  background: transparent;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.navbar-links-pill .navbar-links a.active::after {
+  background: #fff;
+}
+
+.navbar-links-pill .navbar-links a:hover {
+  color: #fff;
 }
 
 .navbar-title {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 2.1rem;
+  font-weight: 900;
   margin: 0;
-  background: linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%);
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  background: linear-gradient(90deg, #e100ff 0%, #007cf0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 8px #00fff7cc;
+  text-fill-color: transparent;
+  letter-spacing: 0.01em;
+  text-shadow: none;
 }
 
 .navbar-ai {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   margin-left: 4px;
-  background: linear-gradient(90deg, #3B82F6 20%, #8B5CF6 80%);
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  background: linear-gradient(90deg, #ff0080 0%, #7928ca 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 8px #8B5CF6cc;
+  text-fill-color: transparent;
+  letter-spacing: 0.01em;
+  text-shadow: none;
 }
 
 .navbar-links {
   display: flex;
   gap: 12px;
-  transition: right 0.3s cubic-bezier(.4,0,.2,1);
-  font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
 }
 
 .navbar-links a {
-  color: #00fff7;
+  color: #18181b;
   font-weight: 500;
   font-size: 16px;
   text-decoration: none;
@@ -156,22 +251,27 @@
   content: '';
   display: block;
   margin: 6px auto 0 auto;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   background: transparent;
   border-radius: 50%;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition: background 0.2s;
 }
 
-.navbar-links a.active::after,
-.navbar-links a:hover::after {
-  background: #00fff7;
-  box-shadow: 0 0 8px #00fff7cc;
+.navbar-links a.active::after {
+  background: #18181b;
 }
 
 .navbar-links a:hover {
-  background: none;
-  color: #fff;
+  color: #18181b;
+}
+
+.navbar-collapsed-container .navbar-links a:hover {
+  color: inherit !important;
+}
+
+.navbar-links-pill .navbar-links a:hover {
+  color: inherit !important;
 }
 
 .navbar-hamburger {
@@ -181,23 +281,23 @@
   width: 32px;
   height: 24px;
   background: none;
-  border: 2px solid #00fff7;
+  border: 2px solid #18181b;
   border-radius: 8px;
-  box-shadow: 0 0 8px #00fff7cc;
+  box-shadow: none;
   cursor: pointer;
   padding: 0;
   z-index: 1100;
-  transition: border 0.2s, box-shadow 0.2s;
+  transition: border 0.2s;
 }
 
 .navbar-hamburger span {
   display: block;
   height: 4px;
   width: 100%;
-  background: #00fff7;
+  background: #18181b;
   border-radius: 2px;
   transition: all 0.3s;
-  box-shadow: 0 0 4px #00fff7cc;
+  box-shadow: none;
 }
 
 /* Hamburger animation */
@@ -220,14 +320,12 @@
     height: 100vh;
     width: 70vw;
     max-width: 320px;
-    background: rgba(18, 22, 34, 0.98);
-    backdrop-filter: blur(18px) saturate(180%);
-    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    background: #fff;
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
     padding: 80px 32px 32px 32px;
-    box-shadow: -2px 0 32px #00fff7cc;
+    box-shadow: -2px 0 32px rgba(0,0,0,0.10);
     transition: right 0.3s cubic-bezier(.4,0,.2,1);
     z-index: 3000;
   }
@@ -245,7 +343,7 @@
     max-width: 98vw;
     min-width: 0;
     padding: 8px 2vw;
-    border-radius: 20px;
+    border-radius: 16px;
     min-height: 44px;
     gap: 8px;
   }
@@ -260,7 +358,7 @@
     gap: 8px;
     height: auto;
     padding: 0 4px;
-    background: rgba(24, 24, 27, 0.98);
+    background: #fff;
     border-radius: 12px;
   }
   .navbar-collapsed-container .navbar-links a {
@@ -270,16 +368,40 @@
 } 
 
 .navbar-header:not(.scrolled) .navbar-links a {
-  color: #fff;
+  color: #18181b;
   transition: color 0.2s;
 }
 
 .navbar-header:not(.scrolled) .navbar-links a:hover {
-  color: #00fff7;
+  color: #ff9100;
 }
 
-.navbar-header:not(.scrolled) .navbar-links a.active::after,
-.navbar-header:not(.scrolled) .navbar-links a:hover::after {
-  background: #00fff7;
-  box-shadow: 0 0 8px #00fff7cc;
+.navbar-header:not(.scrolled) .navbar-links a.active::after {
+  background: #18181b;
+} 
+
+.navbar-links a:hover::after {
+  background: #18181b;
+}
+
+.navbar-collapsed-container .navbar-links a:hover::after {
+  background: #fff;
+}
+
+.navbar-links-pill .navbar-links a:hover::after {
+  background: #fff;
+}
+
+.navbar-links a:hover,
+.navbar-collapsed-container .navbar-links a:hover,
+.navbar-links-pill .navbar-links a:hover {
+  color: inherit !important;
+} 
+
+.navbar-header.scrolled .navbar-links a:hover {
+  color: inherit !important;
+} 
+
+.navbar-header.scrolled .navbar-links a {
+  color: #fff;
 } 

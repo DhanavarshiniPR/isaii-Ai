@@ -4,6 +4,7 @@ import '../globals.css'
 import AnimatedFadeInUp from '../components/AnimatedFadeInUp';
 import { useState, useEffect } from 'react';
 import { AnimatedHeading, AnimatedPill } from '../components/Hero';
+import ScrollDirectionEffect from '../components/ScrollDirectionEffect';
 
 export default function Products() {
   const [isMobile, setIsMobile] = useState(false);
@@ -15,8 +16,8 @@ export default function Products() {
   }, []);
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#fff' }}>
-      <main style={{ padding: isMobile ? '0 4px' : '0 20px', background: '#f9fafc', fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafc', fontFamily: 'Inter, Helvetica, Arial, sans-serif' }}>
+      <main style={{ padding: isMobile ? '0 8px' : '0 32px', maxWidth: '1200px', margin: '0 auto', background: 'transparent' }}>
         {/* Header Section */}
         <section style={{
           padding: isMobile ? '32px 0 16px 0' : '56px 0 32px 0',
@@ -26,34 +27,46 @@ export default function Products() {
         }}>
           <div style={{
             display: 'flex',
-            flexDirection: isMobile ? 'column' : 'row',
-            justifyContent: 'space-between',
-            alignItems: isMobile ? 'flex-start' : 'flex-start',
-            marginBottom: isMobile ? '28px' : '60px',
-            gap: isMobile ? '12px' : 0
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginBottom: isMobile ? '28px' : '48px',
+            width: '100%',
           }}>
-            {/* Large, centered section pill */}
             <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '100%',
-              marginBottom: '32px',
+              display: 'inline-block',
+              background: '#fff',
+              color: '#18181b',
+              fontWeight: 700,
+              fontSize: isMobile ? '0.95rem' : '1.1rem',
+              borderRadius: '999px',
+              padding: isMobile ? '7px 18px' : '10px 28px',
+              marginBottom: '18px',
+              letterSpacing: '0.04em',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+            }}>
+              ISAII PRODUCTS
+            </div>
+            <h1 style={{
+              fontSize: isMobile ? '1.5rem' : '2.3rem',
+              fontWeight: 800,
+              color: '#18181b',
+              margin: 0,
+              marginBottom: isMobile ? '12px' : '18px',
+              textAlign: 'center',
+              letterSpacing: '-1px',
+            }}>
+              Discover the Power of Our AI Products
+            </h1>
+            <p style={{
+              fontSize: isMobile ? '1.05rem' : '1.15rem',
+              color: '#444',
+              lineHeight: '1.6',
+              maxWidth: isMobile ? '100%' : '500px',
+              margin: 0,
               textAlign: 'center',
             }}>
-              <AnimatedPill text="ISAII PRODUCTS" style={{ fontSize: isMobile ? '16px' : '20px', padding: isMobile ? '10px 18px' : '12px 28px', marginBottom: '18px' }} />
-              <p style={{
-                fontSize: isMobile ? '1.1rem' : '20px',
-                color: '#222',
-                lineHeight: '1.6',
-                maxWidth: isMobile ? '100%' : '500px',
-                margin: 0,
-                textShadow: 'none',
-              }}>
-                Discover the innovative marketing strategies that set Isaii-AI apart, driving success in the digital landscape.
-              </p>
-            </div>
+              Explore our suite of advanced AI solutions crafted to optimize workflows, elevate user experiences, and foster innovation across diverse industries and platforms.
+            </p>
           </div>
         </section>
 
@@ -61,9 +74,9 @@ export default function Products() {
         <div className="product-grid-responsive" style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: isMobile ? '24px' : '32px',
+          gap: isMobile ? '20px' : '32px',
           width: '100%',
-          padding: isMobile ? '24px 4px' : '32px 12px',
+          padding: isMobile ? '16px 0' : '24px 0',
           boxSizing: 'border-box',
           overflow: 'hidden',
         }}>
@@ -117,53 +130,118 @@ export default function Products() {
               image: '/AI E-COMMERCE.png',
             },
           ].map((product, idx) => (
-            <AnimatedFadeInUp key={product.title}>
-              <a href="/contact" className="product-card-link" style={{
-                background: 'rgba(30, 30, 40, 0.96)',
+            <ScrollDirectionEffect key={product.title} style={{ width: '100%' }}>
+              <div className="product-card-link" style={{
+                background: '#fff',
                 borderRadius: isMobile ? '14px' : '22px',
-                boxShadow: '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset',
-                border: '2px solid #00fff7',
-                transition: 'transform 0.3s, box-shadow 0.3s, border 0.3s',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                border: 'none',
+                transition: 'transform 0.2s, box-shadow 0.2s',
                 cursor: 'pointer',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'flex-start',
                 textDecoration: 'none',
-                willChange: 'transform, box-shadow, border',
                 width: '100%',
-                minHeight: isMobile ? '320px' : '380px',
+                minHeight: isMobile ? '220px' : '260px',
                 height: 'auto',
                 boxSizing: 'border-box',
-                overflow: 'visible',
+                overflow: 'hidden',
                 padding: isMobile ? '14px' : '24px',
               }}
-              onMouseOver={e => { e.currentTarget.style.boxShadow = '0 0 32px #00fff7, 0 0 0 2.5px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1.04)'; }}
-              onMouseOut={e => { e.currentTarget.style.boxShadow = '0 0 16px #00fff7, 0 0 0 2px #00fff7 inset'; e.currentTarget.style.transform = 'scale(1)'; }}
-            >
-              <img src={product.image} alt={product.title} style={{
-                height: isMobile ? '100px' : '140px',
-                width: 'auto',
-                maxWidth: '90%',
-                objectFit: 'contain',
-                display: 'block',
-                boxShadow: '0 0 12px #00fff7cc',
-                border: 'none',
-                marginTop: isMobile ? '8px' : '12px',
-                marginBottom: isMobile ? '18px' : '24px',
-              }} />
-              <h3 style={{ fontSize: isMobile ? '1.18rem' : '22px', fontWeight: 'bold', marginTop: 0, marginBottom: isMobile ? '8px' : '14px', textAlign: 'center', color: '#fff', background: 'none', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>{product.title}</h3>
-              <div style={{ fontSize: isMobile ? '1.05rem' : '16px', color: '#fff', fontWeight: 600, marginBottom: isMobile ? '8px' : '12px', textAlign: 'center', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>{product.subtitle}</div>
-              <p style={{ fontSize: isMobile ? '1rem' : '15px', color: '#fff', lineHeight: '1.6', textAlign: 'left', margin: 0, marginTop: '8px', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>{product.description}</p>
-            </a>
-          </AnimatedFadeInUp>
-        ))}
-      </div>
-      <div style={{ width: '100%', height: '1px', background: '#e5e7eb', margin: '32px 0 0 0' }} />
+              onMouseOver={e => { e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.14)'; }}
+              onMouseOut={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)'; }}
+              >
+                <div style={{
+                  width: '100%',
+                  aspectRatio: '1.5/1',
+                  borderRadius: isMobile ? '10px' : '18px',
+                  overflow: 'hidden',
+                  marginBottom: isMobile ? '14px' : '18px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: '#f5f5f7',
+                }}>
+                  <img src={product.image} alt={product.title} style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: isMobile ? '10px' : '18px',
+                    display: 'block',
+                    boxShadow: 'none',
+                    border: 'none',
+                  }} />
+                </div>
+                <h3 style={{ fontSize: isMobile ? '1.08rem' : '1.18rem', fontWeight: 700, marginTop: 0, marginBottom: isMobile ? '6px' : '10px', textAlign: 'center', color: '#18181b', background: 'none', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>{product.title}</h3>
+                <div style={{ fontSize: isMobile ? '0.98rem' : '1.05rem', color: '#888', fontWeight: 600, marginBottom: isMobile ? '6px' : '10px', textAlign: 'center', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>{product.subtitle}</div>
+                <p style={{ fontSize: isMobile ? '0.97rem' : '1.01rem', color: '#444', lineHeight: '1.6', textAlign: 'left', margin: 0, marginTop: '6px', textShadow: 'none', wordBreak: 'break-word', overflow: 'visible' }}>{product.description}</p>
+              </div>
+            </ScrollDirectionEffect>
+          ))}
+        </div>
 
-     {/* FAQ Section (copied from product page) */}
-        {/* FAQ section can be added here with the same glassy/neon style as Features.js if needed */}
-
+        {/* FAQ Section */}
+        <section style={{
+          padding: isMobile ? '32px 0 24px 0' : '56px 0 40px 0',
+          width: '100%',
+          background: 'transparent',
+          boxSizing: 'border-box',
+        }}>
+          <div style={{
+            maxWidth: '900px',
+            margin: '0 auto',
+            background: '#fff',
+            borderRadius: '18px',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+            padding: isMobile ? '18px 8px' : '32px 32px',
+          }}>
+            <h2 style={{ fontSize: isMobile ? '1.2rem' : '1.5rem', fontWeight: 700, marginTop: 0, marginBottom: '18px', color: '#18181b', background: 'none', textShadow: 'none' }}>Explore Our FAQs</h2>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: isMobile ? '12px' : '24px',
+              textAlign: 'left',
+            }}>
+              {[
+                { q: 'Trial Period?', a: 'We offer a risk-free trial period to allow you to experience the benefits of our AI solutions firsthand.' },
+                { q: 'Performance Guarantees?', a: 'We deliver performance benchmarks and provide ongoing optimization to ensure your AI systems operate at their best.' },
+                { q: 'Customer Support?', a: 'Dedicated 24/7 support is available through email, chat, and phone to assist with any questions or technical issues.' },
+                { q: 'Customization Options?', a: 'Our AI systems are fully customizable to align with your business goals, workflows, and branding requirements.' },
+                { q: 'Data Security?', a: 'We implement robust security measures, including encryption and compliance with GDPR and other data protection standards.' },
+                { q: 'Updates and Maintenance?', a: 'Regular updates are included to keep your AI solutions cutting-edge, along with maintenance to ensure smooth operation.' },
+              ].map((item, idx) => (
+                <div key={item.q} style={{
+                  background: '#fff',
+                  borderRadius: '14px',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                  border: 'none',
+                  padding: isMobile ? '14px 10px' : '22px 18px',
+                  margin: 0,
+                  marginBottom: 0,
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  cursor: 'default',
+                }}>
+                  <div style={{
+                    fontSize: isMobile ? '1.01rem' : '1.13rem',
+                    fontWeight: 700,
+                    marginBottom: '8px',
+                    color: '#18181b',
+                    background: 'none',
+                    textShadow: 'none',
+                  }}>{item.q}</div>
+                  <div style={{
+                    fontSize: isMobile ? '0.97rem' : '1.01rem',
+                    color: '#444',
+                    lineHeight: '1.6',
+                    textShadow: 'none',
+                  }}>{item.a}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );

@@ -119,115 +119,78 @@ export default function Hero({ isProductsPage = false }) {
   return (
     <>
       <section style={{
-        background: 'rgba(24, 24, 27, 0.92)',
-        backdropFilter: 'blur(12px) saturate(140%)',
-        WebkitBackdropFilter: 'blur(12px) saturate(140%)',
+        background: '#18181b',
         color: '#fff',
-        padding: isMobile ? '28px 0 28px 0' : '48px 0 48px 32px',
-        borderRadius: isMobile ? '16px' : '32px',
-        margin: isMobile ? '20px 0' : '40px auto',
-        maxWidth: isMobile ? '100%' : '900px',
-        minHeight: isMobile ? '180px' : '320px',
+        padding: isMobile ? '32px 8px' : '64px 56px',
+        borderRadius: '32px',
+        margin: isMobile ? '24px 0' : '48px auto',
+        maxWidth: isMobile ? '100%' : '980px',
+        minHeight: isMobile ? '180px' : '340px',
         position: 'relative',
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
         justifyContent: 'flex-start',
         alignItems: isMobile ? 'flex-start' : 'center',
-        boxShadow: '0 4px 24px #18181b44',
-        fontFamily: 'Fira Mono, Menlo, Monaco, Consolas, monospace',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
+        fontFamily: 'Inter, Helvetica, Arial, sans-serif',
       }}>
         {/* Main hero text and CTA directly in section */}
-        <div style={{ flex: '1', maxWidth: isMobile ? '100%' : '650px', zIndex: 2 }}>
-          <AnimatedHeading
-            text={"Innovate, Automate,\nand Succeed with AI"}
-            as="h1"
-            style={{
-              fontSize: isMobile ? '2.2rem' : '72px',
-              fontWeight: '900',
-              marginBottom: isMobile ? '18px' : '32px',
-              lineHeight: isMobile ? '1.15' : '1.08',
-              background: 'linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              wordBreak: 'break-word',
-              textAlign: isMobile ? 'left' : 'inherit',
-              textShadow: '0 0 8px #00fff799',
-            }}
-          />
-          <p style={{ 
-            fontSize: isMobile ? '1rem' : '22px',
+        <div style={{ flex: '1', maxWidth: isMobile ? '100%' : '600px', zIndex: 2, textAlign: 'left' }}>
+          <h1 style={{
+            fontSize: isMobile ? '2.1rem' : '3.5rem',
+            fontWeight: 800,
+            marginBottom: isMobile ? '16px' : '28px',
+            lineHeight: isMobile ? '1.15' : '1.08',
             color: '#fff',
-            marginBottom: isMobile ? '28px' : '48px',
-            lineHeight: isMobile ? '1.5' : '1.6',
-            textAlign: isMobile ? 'left' : 'inherit',
-            textShadow: 'none',
+            letterSpacing: '-1px',
+            textAlign: 'left',
           }}>
-            Innovative AI technology designed to solve pressing challenges,<br />
-            providing businesses with strategic, actionable problem-solving<br />
-            tools.
+            Innovate, Automate,<br />and Succeed with AI
+          </h1>
+          <p style={{
+            fontSize: isMobile ? '1.05rem' : '1.35rem',
+            color: '#fff',
+            marginBottom: isMobile ? '24px' : '40px',
+            lineHeight: '1.5',
+            textAlign: 'left',
+            fontWeight: 400,
+          }}>
+            Innovative AI technology designed to solve pressing challenges, providing businesses with strategic, actionable problem-solving tools.
           </p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '10px' : '20px', flexDirection: isMobile ? 'column' : 'row', width: isMobile ? '100%' : 'auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexDirection: isMobile ? 'column' : 'row', width: isMobile ? '100%' : 'auto' }}>
             <a
               href="/contact"
-              ref={scheduleRef}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                background: 'linear-gradient(90deg, #00fff7 20%, #8B5CF6 80%)',
-                borderRadius: '16px',
+                background: '#222',
+                borderRadius: '12px',
                 textDecoration: 'none',
-                overflow: 'hidden',
-                fontWeight: 700,
-                fontSize: isMobile ? '1rem' : '20px',
-                boxShadow: '0 0 12px #00fff799',
-                transition: 'box-shadow 0.2s, background 0.2s',
-                cursor: 'pointer',
+                fontWeight: 600,
+                fontSize: isMobile ? '1rem' : '1.1rem',
+                color: '#fff',
+                padding: isMobile ? '12px 18px' : '14px 28px',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
                 border: 'none',
-                padding: 0,
-                height: isMobile ? '44px' : '56px',
-                width: isMobile ? '100%' : 'auto',
-                justifyContent: 'center',
+                cursor: 'pointer',
+                marginBottom: isMobile ? '10px' : 0,
+                transition: 'background 0.2s',
+                gap: '12px',
               }}
             >
-              <span
-                style={{
-                  color: '#18181b',
-                  padding: isMobile ? '0 18px' : '0 36px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  height: '100%',
-                  fontWeight: 700,
-                  fontSize: isMobile ? '1rem' : '20px',
-                  letterSpacing: '0.01em',
-                  whiteSpace: 'nowrap',
-                  transition: 'transform 0.4s cubic-bezier(0.4,0,0.2,1)',
-                  transform:
-                    hoverDir === 'up' ? 'translateY(-12px)' :
-                    hoverDir === 'down' ? 'translateY(12px)' :
-                    'translateY(0)',
-                  textShadow: 'none',
-                }}
-              >
-                Schedule a call
-              </span>
-              <span
-                style={{
-                  background: 'rgba(18, 22, 34, 0.92)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: isMobile ? '44px' : '56px',
-                  height: isMobile ? '44px' : '56px',
-                  borderRadius: '16px',
-                  transition: 'background 0.2s',
-                  fontSize: isMobile ? '20px' : '28px',
-                  boxShadow: '0 0 8px #8B5CF699',
-                }}
-              >
-                <svg width={isMobile ? '24' : '32'} height={isMobile ? '24' : '32'} viewBox="0 0 24 24" fill="none" stroke="#00fff7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block', filter: 'drop-shadow(0 0 4px #00fff7cc)' }}><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <span>Schedule a call</span>
+              <span style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: '#ff9100',
+                borderRadius: '8px',
+                width: isMobile ? '32px' : '36px',
+                height: isMobile ? '32px' : '36px',
+                marginLeft: '10px',
+                transition: 'background 0.2s',
+              }}>
+                <svg width={isMobile ? 18 : 20} height={isMobile ? 18 : 20} viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
               </span>
             </a>
           </div>
@@ -236,59 +199,35 @@ export default function Hero({ isProductsPage = false }) {
         {!isMobile && (
           <>
             <img
-              src="/robo.jpeg"
-              alt="Tech Abstract Top Right"
+              src="/3d-shape-1.svg"
+              alt="3D Abstract Top Right"
               style={{
                 position: 'absolute',
-                top: '16px',
-                right: '32px',
-                width: '160px',
-                height: '160px',
-                objectFit: 'cover',
-                borderRadius: '50%',
-                filter: 'drop-shadow(0 0 8px #00fff799)',
+                top: '32px',
+                right: '48px',
+                width: '120px',
+                height: '120px',
+                objectFit: 'contain',
                 zIndex: 1,
                 transition: 'transform 0.3s',
                 cursor: 'pointer',
-                border: '2.5px solid #00fff7',
               }}
               onMouseOver={e => e.currentTarget.style.transform = 'scale(1.08)'}
               onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
             />
             <img
-              src="/ai.jpeg"
-              alt="Tech Abstract Bottom Right"
-              className="rotating-eye"
+              src="/3d-shape-2.svg"
+              alt="3D Abstract Bottom Right"
               style={{
                 position: 'absolute',
                 bottom: '-60px',
-                right: '16px',
-                width: '220px',
-                height: '220px',
-                objectFit: 'cover',
-                borderRadius: '50%',
-                filter: 'drop-shadow(0 0 12px #8B5CF699)',
-                zIndex: 1,
-                cursor: 'pointer',
-                border: '2.5px solid #8B5CF6',
-              }}
-            />
-            <img
-              src="/tech.jpeg"
-              alt="Tech Abstract Bottom Center Right"
-              style={{
-                position: 'absolute',
-                bottom: '-80px',
-                right: '240px',
-                width: '160px',
-                height: '160px',
-                objectFit: 'cover',
-                borderRadius: '50%',
-                filter: 'drop-shadow(0 0 8px #00fff799)',
+                right: '32px',
+                width: '140px',
+                height: '140px',
+                objectFit: 'contain',
                 zIndex: 1,
                 transition: 'transform 0.3s',
                 cursor: 'pointer',
-                border: '2.5px solid #00fff7',
               }}
               onMouseOver={e => e.currentTarget.style.transform = 'scale(1.08)'}
               onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}

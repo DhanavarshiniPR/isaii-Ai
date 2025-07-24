@@ -35,40 +35,51 @@ export default function Navbar() {
     <header className={`navbar-header${isScrolled ? ' scrolled' : ''}`}>  
       {isScrolled ? (
         <div className="navbar-collapsed-container">
-          <div className="navbar-logo">
+          <div className="navbar-logo-pill">
             <h1 className="navbar-title">Isaii</h1>
             <span className="navbar-ai">AI</span>
           </div>
-          <nav className={`navbar-links${menuOpen ? ' open' : ''}`}>
+          <div className="navbar-links-pill">
+            <nav className={`navbar-links${menuOpen ? ' open' : ''}`}>
+              <Link href="/" className={pathname === '/' ? 'active' : ''}>Home</Link>
+              <Link href="/products" className={pathname === '/products' ? 'active' : ''}>Our Products</Link>
+              <Link href="/services" className={pathname === '/services' ? 'active' : ''}>Services</Link>
+              <Link href="/contact" className={pathname === '/contact' ? 'active' : ''}>Contact</Link>
+            </nav>
+          </div>
+          <button
+            className={`navbar-hamburger${menuOpen ? ' open' : ''}`}
+            aria-label="Toggle navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+      ) : (
+        <>
+          <div className="navbar-logo navbar-logo-pill">
+            <h1 className="navbar-title">Isaii</h1>
+            <span className="navbar-ai">AI</span>
+          </div>
+          <nav className={`navbar-links${menuOpen ? ' open' : ''}`}>  
             <Link href="/" className={pathname === '/' ? 'active' : ''}>Home</Link>
             <Link href="/products" className={pathname === '/products' ? 'active' : ''}>Our Products</Link>
             <Link href="/services" className={pathname === '/services' ? 'active' : ''}>Services</Link>
             <Link href="/contact" className={pathname === '/contact' ? 'active' : ''}>Contact</Link>
           </nav>
-        </div>
-      ) : (
-        <>
-      <div className="navbar-logo">
-        <h1 className="navbar-title">Isaii</h1>
-        <span className="navbar-ai">AI</span>
-      </div>
-      <nav className={`navbar-links${menuOpen ? ' open' : ''}`}>  
-            <Link href="/" className={pathname === '/' ? 'active' : ''}>Home</Link>
-            <Link href="/products" className={pathname === '/products' ? 'active' : ''}>Our Products</Link>
-            <Link href="/services" className={pathname === '/services' ? 'active' : ''}>Services</Link>
-            <Link href="/contact" className={pathname === '/contact' ? 'active' : ''}>Contact</Link>
-      </nav>
+          <button
+            className={`navbar-hamburger${menuOpen ? ' open' : ''}`}
+            aria-label="Toggle navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </>
       )}
-      <button
-        className={`navbar-hamburger${menuOpen ? ' open' : ''}`}
-        aria-label="Toggle navigation"
-        onClick={() => setMenuOpen((open) => !open)}
-      >
-        <span />
-        <span />
-        <span />
-      </button>
     </header>
   );
 }
